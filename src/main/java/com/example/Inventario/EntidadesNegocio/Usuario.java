@@ -1,4 +1,4 @@
-package com.example.Inventario.models;
+package com.example.Inventario.EntidadesNegocio;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;

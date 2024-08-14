@@ -1,22 +1,25 @@
-package com.example.Inventario.models;
+package com.example.Inventario.EntidadesNegocio;
 
-import jakarta.persistence.Entity;
 import jakarta.persistence.*;
-import jakarta.persistence.Table;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "Departamento")
-public class Departamento {
+@Table(name = "TipoItem")
+public class TipoItem {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "El campo es obligatorio")
+    @NotBlank(message = "El campo es requerido")
     private String codigo;
 
-    @NotBlank(message = "El campo es obligatorio")
+    @NotBlank(message = "El campo es requerido")
     private String nombre;
+
+    // Getters y Setters
 
     public Long getId() {
         return id;

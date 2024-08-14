@@ -1,4 +1,4 @@
-package com.example.Inventario.models;
+package com.example.Inventario.EntidadesNegocio;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;

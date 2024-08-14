@@ -1,29 +1,23 @@
-package com.example.Inventario.models;
+package com.example.Inventario.EntidadesNegocio;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "Cliente")
-public class Cliente {
+@Table(name = "proveedor")
+public class proveedor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank(message = "El campo es requerido")
-    private String tipoDocumento;
+    private String NIT;
 
     @NotBlank(message = "El campo es requerido")
-    private int numeroDocumento;
-
-    private String nrc;
+    private String NRC;
 
     @NotBlank(message = "El campo es requerido")
     private String nombre;
@@ -32,25 +26,25 @@ public class Cliente {
 
     private String desActividad;
 
-    @ManyToOne
-    @JoinColumn(name = "id_Municipio")
-    private Municipio municipio;
+    private String nombreComercial;
 
-    private String telefono;
+    private String descripcion;
 
     @NotBlank(message = "El campo es requerido")
     private String correo;
 
     @NotBlank(message = "El campo es requerido")
-    private String password;
+    private String telefono;
+
+    @ManyToOne
+    @JoinColumn(name = "id_Municipio")
+    private Municipio municipio;
 
     @ManyToOne
     @JoinColumn(name = "id_Empresa")
     private Empresa empresa;
 
     // Getters y Setters
-
-
 
     public Long getId() {
         return id;
@@ -60,28 +54,20 @@ public class Cliente {
         this.id = id;
     }
 
-    public String getTipoDocumento() {
-        return tipoDocumento;
+    public String getNIT() {
+        return NIT;
     }
 
-    public void setTipoDocumento(String tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
+    public void setNIT(String NIT) {
+        this.NIT = NIT;
     }
 
-    public int getNumeroDocumento() {
-        return numeroDocumento;
+    public String getNRC() {
+        return NRC;
     }
 
-    public void setNumeroDocumento(int numeroDocumento) {
-        this.numeroDocumento = numeroDocumento;
-    }
-
-    public String getNrc() {
-        return nrc;
-    }
-
-    public void setNrc(String nrc) {
-        this.nrc = nrc;
+    public void setNRC(String NRC) {
+        this.NRC = NRC;
     }
 
     public String getNombre() {
@@ -108,12 +94,20 @@ public class Cliente {
         this.desActividad = desActividad;
     }
 
-    public String getTelefono() {
-        return telefono;
+    public String getNombreComercial() {
+        return nombreComercial;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setNombreComercial(String nombreComercial) {
+        this.nombreComercial = nombreComercial;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public String getCorreo() {
@@ -124,12 +118,12 @@ public class Cliente {
         this.correo = correo;
     }
 
-    public String getPassword() {
-        return password;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public Municipio getMunicipio() {
