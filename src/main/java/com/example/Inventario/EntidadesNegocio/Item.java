@@ -53,22 +53,22 @@ public class Item {
     @JoinColumn(name = "id_tipoitem", referencedColumnName = "id")
     private TipoItem tipoitem;
 
-    @OneToMany(mappedBy = "item")
+    @OneToMany(mappedBy = "items")
     private Set<ItemDetalle> itemdetalle = new HashSet<>();
 
-    @OneToMany(mappedBy = "item")
+    @OneToMany(mappedBy = "items")
     private Set<ItemImagen> itemimagen = new HashSet<>();
 
-    @OneToMany(mappedBy = "item")
+    @OneToMany(mappedBy = "items")
     private Set<DetalleVenta> detalleventa = new HashSet<>();
 
-    @OneToMany(mappedBy = "item")
+    @OneToMany(mappedBy = "items")
     private Set<DetalleCita> detallecita = new HashSet<>();
 
-    @OneToMany(mappedBy = "item")
+    @OneToMany(mappedBy = "items")
     private Set<DetalleCarrito> detallecarrito = new HashSet<>();
 
-    @OneToMany(mappedBy = "item")
+    @OneToMany(mappedBy = "items")
     private Set<ItemProveedor> itemproveedor = new HashSet<>();
 
 

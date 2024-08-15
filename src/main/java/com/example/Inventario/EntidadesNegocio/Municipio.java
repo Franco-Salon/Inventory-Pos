@@ -25,7 +25,7 @@ public class Municipio {
     @NotBlank(message = "El campo es requirido")
     private String codigo;
 
-    @OneToMany(mappedBy = "municipio")
+    @OneToMany(mappedBy = "municipios")
     private Set<Item> item = new HashSet<>();
 
     public long getId() {

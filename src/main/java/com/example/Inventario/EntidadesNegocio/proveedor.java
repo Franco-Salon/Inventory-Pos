@@ -47,10 +47,10 @@ public class proveedor {
     @JoinColumn(name = "id_Empresa", referencedColumnName = "id")
     private Empresa empresa;
 
-    @OneToMany(mappedBy = "proveedor")
+    @OneToMany(mappedBy = "proveedores")
     private Set<Compra> compra = new HashSet<>();
 
-    @OneToMany(mappedBy = "proveedor")
+    @OneToMany(mappedBy = "proveedores")
     private Set<ItemProveedor> itemproveedor = new HashSet<>();
 
     // Getters y Setters

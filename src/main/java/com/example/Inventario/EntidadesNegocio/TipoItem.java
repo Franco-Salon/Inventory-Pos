@@ -22,7 +22,7 @@ public class TipoItem {
     @NotBlank(message = "El campo es requerido")
     private String nombre;
 
-    @OneToMany(mappedBy = "tipoitem")
+    @OneToMany(mappedBy = "tipoitems")
     private Set<Item> item = new HashSet<>();
 
     // Getters y Setters

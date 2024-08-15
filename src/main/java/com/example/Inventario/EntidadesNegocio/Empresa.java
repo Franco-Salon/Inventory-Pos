@@ -49,22 +49,22 @@ public class Empresa {
     @JoinColumn(name = "id_Municipio", referencedColumnName = "id")
     private Municipio municipio;
 
-    @OneToMany(mappedBy = "empresa")
+    @OneToMany(mappedBy = "empresas")
     private Set<proveedor> proveedores = new HashSet<>();
 
-    @OneToMany(mappedBy = "empresa")
+    @OneToMany(mappedBy = "empresas")
     private Set<Venta> venta = new HashSet<>();
 
-    @OneToMany(mappedBy = "empresa")
+    @OneToMany(mappedBy = "empresas")
     private Set<Cliente> cliente = new HashSet<>();
 
-    @OneToMany(mappedBy = "empresa")
+    @OneToMany(mappedBy = "empresas")
     private Set<Usuario> usuario = new HashSet<>();
 
-    @OneToMany(mappedBy = "empresa")
+    @OneToMany(mappedBy = "empresas")
     private Set<Item> item = new HashSet<>();
 
-    @OneToMany(mappedBy = "empresa")
+    @OneToMany(mappedBy = "empresas")
     private Set<Compra> compra = new HashSet<>();
 
 
