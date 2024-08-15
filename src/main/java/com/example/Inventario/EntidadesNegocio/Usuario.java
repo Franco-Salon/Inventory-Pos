@@ -3,8 +3,11 @@ package com.example.Inventario.EntidadesNegocio;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
-@Table(name = "Usuario")
+@Table(name = "usuario")
 public class Usuario {
 
     @Id
@@ -34,6 +37,11 @@ public class Usuario {
     @JoinColumn(name = "id_Empresa", referencedColumnName = "id")
     private Empresa empresa;
 
+    @OneToMany(mappedBy = "usuarios")
+    private Set<Ajuste> ajustes = new HashSet<>();
+
+    @OneToMany(mappedBy = "usuarios")
+    private Set<Compra> compras = new HashSet<>();
     // Getters y Setters
 
     public Long getId() {
