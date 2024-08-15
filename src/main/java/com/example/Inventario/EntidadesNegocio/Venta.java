@@ -14,7 +14,7 @@ public class Venta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @NotBlank(message = "el campo es requerida")
     private String codigo;
@@ -56,11 +56,11 @@ public class Venta {
     @OneToMany(mappedBy = "ventas")
     private Set<DetalleVenta> detalleVentas = new HashSet<>();
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

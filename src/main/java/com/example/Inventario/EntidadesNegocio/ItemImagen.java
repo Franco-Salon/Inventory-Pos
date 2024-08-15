@@ -3,12 +3,12 @@ package com.example.Inventario.EntidadesNegocio;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "ItemImagen")
+@Table(name = "itemImagen")
 public class ItemImagen {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @ManyToOne
     @JoinColumn(name = "id_Item", referencedColumnName = "id")
@@ -19,11 +19,11 @@ public class ItemImagen {
 
     // Getters y Setters
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 

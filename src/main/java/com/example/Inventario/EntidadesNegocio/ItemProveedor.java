@@ -6,12 +6,12 @@ import jakarta.persistence.GenerationType;
 
 
 @Entity
-@Table(name = "ItemProveedor")
+@Table(name = "itemProveedor")
 public class ItemProveedor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @ManyToOne
     @JoinColumn(name = "id_Item", referencedColumnName = "id")
@@ -23,11 +23,11 @@ public class ItemProveedor {
 
     // Getters y Setters
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
