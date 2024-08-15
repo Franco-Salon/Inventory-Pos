@@ -11,7 +11,7 @@ public class UnidadMedida {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @NotBlank(message = "El campo es requerido")
     private String codigo;
@@ -21,7 +21,7 @@ public class UnidadMedida {
 
     // Getters y Setters
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
