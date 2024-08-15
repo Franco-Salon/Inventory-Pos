@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
-@Table(name = "Cargo")
+@Table(name = "cargo")
 public class Cargo {
 
     @Id

@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "Cliente")
+@Table(name = "cliente")
 public class Cliente {
 
     @Id
@@ -45,13 +45,13 @@ public class Cliente {
     @JoinColumn(name = "id_Empresa", referencedColumnName = "id")
     private Empresa empresa;
 
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "clientes")
     private Set<Cita> cita = new HashSet<>();
 
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "clientes")
     private Set<CarritoCompra> carritocompra = new HashSet<>();
 
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "clientes")
     private Set<Venta> venta = new HashSet<>();
 
     // Getters y Setters

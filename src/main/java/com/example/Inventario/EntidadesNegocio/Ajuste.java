@@ -7,7 +7,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "Ajuste")
+@Table(name = "ajuste")
 public class Ajuste {
 
     @Id

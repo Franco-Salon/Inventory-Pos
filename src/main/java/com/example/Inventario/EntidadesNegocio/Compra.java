@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "Compra")
+@Table(name = "compra")
 public class Compra {
 
     @Id
@@ -40,7 +40,7 @@ public class Compra {
     @JoinColumn(name = "id_Empresa", referencedColumnName = "id")
     private Empresa empresa;
 
-    @OneToMany(mappedBy = "compra")
+    @OneToMany(mappedBy = "compras")
     private Set<CompraDetalle> compradetalle = new HashSet<>();
 
     // Getters and setters

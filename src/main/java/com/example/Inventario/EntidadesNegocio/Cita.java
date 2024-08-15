@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "Cita")
+@Table(name = "cita")
 public class Cita {
 
     @Id
@@ -36,10 +36,10 @@ public class Cita {
 
     private BigDecimal total;
 
-    @OneToMany(mappedBy = "cita")
+    @OneToMany(mappedBy = "citas")
     private Set<DetalleCita> detallecita = new HashSet<>();
 
-    @OneToMany(mappedBy = "cita")
+    @OneToMany(mappedBy = "citas")
     private Set<Venta> venta = new HashSet<>();
 
     // Getters y Setters

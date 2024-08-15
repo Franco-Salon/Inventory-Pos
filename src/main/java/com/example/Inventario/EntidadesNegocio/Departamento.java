@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "Departamento")
+@Table(name = "departamento")
 public class Departamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +21,7 @@ public class Departamento {
     @NotBlank(message = "El campo es obligatorio")
     private String nombre;
 
-    @OneToMany(mappedBy = "departamento")
+    @OneToMany(mappedBy = "departamentos")
     private Set<Municipio> municipio = new HashSet<>();
 
     public long getId() {

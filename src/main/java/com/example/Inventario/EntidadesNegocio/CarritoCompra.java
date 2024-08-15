@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(name = "carritoCompra")
 public class CarritoCompra {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,7 +46,7 @@ public class CarritoCompra {
     @JoinColumn(name = "id_Empresa", referencedColumnName = "id")
     private Empresa empresa;
 
-    @OneToMany(mappedBy = "carritocompra")
+    @OneToMany(mappedBy = "carritocompras")
     private Set<DetalleCarrito> detallecarrito = new HashSet<>();
 
     public long getId() {
