@@ -11,7 +11,7 @@ public class ItemImagen {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "id_Item")
+    @JoinColumn(name = "id_Item", referencedColumnName = "id")
     private Item item;
 
     @Lob

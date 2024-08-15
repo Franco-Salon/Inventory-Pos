@@ -15,7 +15,7 @@ public class Compra {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "id_Proveedor")
+    @JoinColumn(name = "id_Proveedor", referencedColumnName = "id")
     private proveedor Proveedor;
 
     private BigDecimal total;
@@ -29,13 +29,13 @@ public class Compra {
     private String tipoFactura;
 
     @ManyToOne
-    @JoinColumn(name = "id_Usuario")
+    @JoinColumn(name = "id_Usuario", referencedColumnName = "id")
     private Usuario usuario;
 
     private String formaPago;
 
     @ManyToOne
-    @JoinColumn(name = "id_Empresa")
+    @JoinColumn(name = "id_Empresa", referencedColumnName = "id")
     private Empresa empresa;
 
     // Getters and setters
@@ -96,11 +96,12 @@ public class Compra {
         this.tipoFactura = tipoFactura;
     }
 
-    public @NotBlank(message = "el campo es requerida") Usuario getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(@NotBlank(message = "el campo es requerida") Usuario usuario) {
+    public void setUsuario(Usuario usuario)
+    {
         this.usuario = usuario;
     }
 

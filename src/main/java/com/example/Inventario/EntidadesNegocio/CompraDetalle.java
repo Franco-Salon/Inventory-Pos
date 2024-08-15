@@ -13,11 +13,11 @@ public class CompraDetalle {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "id_Compra")
+    @JoinColumn(name = "id_Compra", referencedColumnName = "id")
     private Compra compra;
 
     @ManyToOne
-    @JoinColumn(name = "id_Item")
+    @JoinColumn(name = "id_Item", referencedColumnName = "id")
     private Item item;
 
     private int cantidad;

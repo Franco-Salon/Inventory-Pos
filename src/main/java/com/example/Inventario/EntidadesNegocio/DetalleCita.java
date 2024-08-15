@@ -13,11 +13,11 @@ public class DetalleCita {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "idCita")
+    @JoinColumn(name = "idCita", referencedColumnName = "id")
     private Cita cita;
 
     @ManyToOne
-    @JoinColumn(name = "idItem")
+    @JoinColumn(name = "idItem", referencedColumnName = "id")
     private Item item;
 
 

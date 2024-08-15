@@ -13,7 +13,7 @@ public class Municipio {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "id_Departamento")
+    @JoinColumn(name = "id_Departamento", referencedColumnName = "id")
     private Departamento departamento;
 
     @NotBlank(message = "El campo es requirido")

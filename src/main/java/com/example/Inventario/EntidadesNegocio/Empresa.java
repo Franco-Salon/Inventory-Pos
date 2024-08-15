@@ -43,7 +43,7 @@ public class Empresa {
     private String correo;
 
     @ManyToOne
-    @JoinColumn(name = "id_Municipio")
+    @JoinColumn(name = "id_Municipio", referencedColumnName = "id")
     private Municipio municipio;
 
     public Long getId() {

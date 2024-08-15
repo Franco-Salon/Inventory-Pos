@@ -33,7 +33,7 @@ public class Cliente {
     private String desActividad;
 
     @ManyToOne
-    @JoinColumn(name = "id_Municipio")
+    @JoinColumn(name = "id_Municipio", referencedColumnName = "id")
     private Municipio municipio;
 
     private String telefono;
@@ -45,7 +45,7 @@ public class Cliente {
     private String password;
 
     @ManyToOne
-    @JoinColumn(name = "id_Empresa")
+    @JoinColumn(name = "id_Empresa", referencedColumnName = "id")
     private Empresa empresa;
 
     // Getters y Setters

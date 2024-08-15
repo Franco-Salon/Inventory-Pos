@@ -37,11 +37,11 @@ public class proveedor {
     private String telefono;
 
     @ManyToOne
-    @JoinColumn(name = "id_Municipio")
+    @JoinColumn(name = "id_Municipio", referencedColumnName = "id")
     private Municipio municipio;
 
     @ManyToOne
-    @JoinColumn(name = "id_Empresa")
+    @JoinColumn(name = "id_Empresa", referencedColumnName = "id")
     private Empresa empresa;
 
     // Getters y Setters

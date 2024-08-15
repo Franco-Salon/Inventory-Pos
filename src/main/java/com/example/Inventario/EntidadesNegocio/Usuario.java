@@ -26,12 +26,12 @@ public class Usuario {
     private long dui;
 
     @ManyToOne
-    @JoinColumn(name = "id_Rol")
+    @JoinColumn(name = "id_Rol", referencedColumnName = "id")
     private Rol rol;
 
 
     @ManyToOne
-    @JoinColumn(name = "id_Empresa")
+    @JoinColumn(name = "id_Empresa", referencedColumnName = "id")
     private Empresa empresa;
 
     // Getters y Setters

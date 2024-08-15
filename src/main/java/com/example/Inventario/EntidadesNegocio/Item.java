@@ -44,11 +44,11 @@ public class Item {
     private LocalDate fecha;
 
     @ManyToOne
-    @JoinColumn(name = "id_Categoria")
+    @JoinColumn(name = "id_Categoria", referencedColumnName = "id")
     private CategoriaItem categoriaitem;
 
     @ManyToOne
-    @JoinColumn(name = "id_tipoitem")
+    @JoinColumn(name = "id_tipoitem", referencedColumnName = "id")
     private TipoItem tipoitem;
 
 

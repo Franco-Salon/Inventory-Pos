@@ -17,11 +17,11 @@ public class Cita {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "id_UsuarioSolicitante")
+    @JoinColumn(name = "id_UsuarioSolicitante", referencedColumnName = "id")
     private Cliente cliente;
 
     @ManyToOne
-    @JoinColumn(name = "id_UsuarioEncargado")
+    @JoinColumn(name = "id_UsuarioEncargado", referencedColumnName = "id")
     private Cargo cargo;
 
     @NotNull(message = "La fecha de vencimiento es requerida")

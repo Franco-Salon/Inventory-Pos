@@ -14,11 +14,11 @@ public class ItemProveedor {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "id_Item")
+    @JoinColumn(name = "id_Item", referencedColumnName = "id")
     private Item item;
 
     @ManyToOne
-    @JoinColumn(name = "id_Proveedor")
+    @JoinColumn(name = "id_Proveedor", referencedColumnName = "id")
     private proveedor Proveedor;
 
     // Getters y Setters

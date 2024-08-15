@@ -36,20 +36,19 @@ public class Venta {
 
 
     @ManyToOne
-    @JoinColumn(name = "id_Cliente")
+    @JoinColumn(name = "id_Cliente", referencedColumnName = "id")
     private Cliente cliente;
 
     @ManyToOne
-    @NotBlank(message = "el campo es requerida")
-    @JoinColumn(name = "id_Usuario")
+    @JoinColumn(name = "id_Usuario", referencedColumnName = "id")
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "id_Cita")
+    @JoinColumn(name = "id_Cita", referencedColumnName = "id")
     private Cita cita;
 
     @ManyToOne
-    @JoinColumn(name = "id_Empresa")
+    @JoinColumn(name = "id_Empresa", referencedColumnName = "id")
     private Empresa empresa;
 
     public Long getId() {

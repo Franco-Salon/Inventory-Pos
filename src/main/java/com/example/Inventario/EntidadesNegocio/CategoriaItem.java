@@ -20,7 +20,7 @@ public class CategoriaItem {
     private String descripcion;
 
     @ManyToOne
-    @JoinColumn(name = "id_Empresa")
+    @JoinColumn(name = "id_Empresa", referencedColumnName = "id")
     private Empresa empresa;
 
     // Getters y Setters

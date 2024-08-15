@@ -12,18 +12,18 @@ public class ItemDetalle {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "id_ItemPrincipal")
+    @JoinColumn(name = "id_ItemPrincipal", referencedColumnName = "id")
     private Item itemprincipal;
 
     @ManyToOne
-    @JoinColumn(name = "id_ItemSecundario")
+    @JoinColumn(name = "id_ItemSecundario", referencedColumnName = "id")
     private Item itemsecundario;
 
     @NotBlank(message = "El campo es requerido")
     private int cantidad;
 
     @ManyToOne
-    @JoinColumn(name = "id_UnidadMedida")
+    @JoinColumn(name = "id_UnidadMedida", referencedColumnName = "id")
     private UnidadMedida unidadmedida;
 
 

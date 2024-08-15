@@ -1,6 +1,8 @@
 package com.example.Inventario.EntidadesNegocio;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -12,22 +14,24 @@ public class Ajuste {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
+    @NotNull(message = "La fecha de vencimiento es requerida")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate fecha;
 
     @ManyToOne
-    @JoinColumn(name = "id_Item")
+    @JoinColumn(name = "id_Item", referencedColumnName = "id")
     private Item item;
 
     @ManyToOne
-    @JoinColumn(name = "id_Usuario")
+    @JoinColumn(name = "id_Usuario", referencedColumnName = "id")
     private Usuario usuario;
 
-    @Column(name = "cantidad")
+
     private Integer cantidad;
 
-    @Column(name = "id_unidad_medida")
-    private Integer idUnidadMedida;
+    @ManyToOne
+    @JoinColumn(name = "id_UnidadMedida", referencedColumnName = "id")
+    private UnidadMedida unidadwedida;
 
     @Column(name = "tipo_movimiento")
     private Byte tipoMovimiento;
@@ -74,12 +78,12 @@ public class Ajuste {
         this.cantidad = cantidad;
     }
 
-    public Integer getIdUnidadMedida() {
-        return idUnidadMedida;
+    public UnidadMedida getUnidadwedida() {
+        return unidadwedida;
     }
 
-    public void setIdUnidadMedida(Integer idUnidadMedida) {
-        this.idUnidadMedida = idUnidadMedida;
+    public void setUnidadwedida(UnidadMedida unidadwedida) {
+        this.unidadwedida = unidadwedida;
     }
 
     public Byte getTipoMovimiento() {

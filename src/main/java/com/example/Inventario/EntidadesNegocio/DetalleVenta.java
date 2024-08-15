@@ -15,11 +15,11 @@ public class DetalleVenta {
 
 
     @ManyToOne
-    @JoinColumn(name = "id_Venta")
+    @JoinColumn(name = "id_Venta", referencedColumnName = "id")
     private Venta venta;
 
     @ManyToOne
-    @JoinColumn(name = "id_Item")
+    @JoinColumn(name = "id_Item", referencedColumnName = "id")
     private Item item;
 
 
@@ -32,7 +32,7 @@ public class DetalleVenta {
     private String tipoVenta;
 
     @ManyToOne
-    @JoinColumn(name = "idUnidadMedida")
+    @JoinColumn(name = "idUnidadMedida", referencedColumnName = "id")
     private UnidadMedida unidadMedida;
 
 

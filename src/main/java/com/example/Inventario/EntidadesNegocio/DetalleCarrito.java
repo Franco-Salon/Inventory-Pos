@@ -14,11 +14,11 @@ public class DetalleCarrito {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "id_CarritoCompra")
+    @JoinColumn(name = "id_CarritoCompra", referencedColumnName = "id")
     private CarritoCompra carritocompra;
 
     @ManyToOne
-    @JoinColumn(name = "id_Item")
+    @JoinColumn(name = "id_Item", referencedColumnName = "id")
     private Item item;
 
 
@@ -28,7 +28,7 @@ public class DetalleCarrito {
     private Integer cantidad;
 
     @ManyToOne
-    @JoinColumn(name = "id_UnidadMedida")
+    @JoinColumn(name = "id_UnidadMedida", referencedColumnName = "id")
     private UnidadMedida unidadmedida;
 
     // Getters and setters
