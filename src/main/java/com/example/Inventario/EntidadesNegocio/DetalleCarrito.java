@@ -11,7 +11,7 @@ public class DetalleCarrito {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @ManyToOne
     @JoinColumn(name = "id_CarritoCompra", referencedColumnName = "id")
@@ -33,7 +33,7 @@ public class DetalleCarrito {
 
     // Getters and setters
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 

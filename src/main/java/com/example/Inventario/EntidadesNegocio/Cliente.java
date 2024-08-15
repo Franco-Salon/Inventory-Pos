@@ -12,7 +12,7 @@ public class Cliente {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @NotBlank(message = "El campo es requerido")
     private String tipoDocumento;
@@ -58,7 +58,7 @@ public class Cliente {
 
 
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 

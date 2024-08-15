@@ -13,7 +13,7 @@ import java.util.Set;
 public class Departamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @NotBlank(message = "El campo es obligatorio")
     private String codigo;
@@ -24,7 +24,7 @@ public class Departamento {
     @OneToMany(mappedBy = "departamento")
     private Set<Municipio> municipio = new HashSet<>();
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 

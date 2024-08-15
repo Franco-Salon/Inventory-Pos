@@ -12,7 +12,7 @@ public class Ajuste {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @NotNull(message = "La fecha de vencimiento es requerida")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -38,7 +38,7 @@ public class Ajuste {
 
 
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 

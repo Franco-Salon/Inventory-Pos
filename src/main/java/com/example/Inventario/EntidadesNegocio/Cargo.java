@@ -11,7 +11,7 @@ public class Cargo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @NotBlank(message = "El campo es requerido")
     private String nombre;
@@ -22,7 +22,7 @@ public class Cargo {
 
     // Getters y Setters
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 

@@ -15,7 +15,7 @@ import java.util.Set;
 public class CarritoCompra {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @NotBlank(message = "el campo es requerida")
     private String codigo;
@@ -48,7 +48,7 @@ public class CarritoCompra {
     @OneToMany(mappedBy = "carritocompra")
     private Set<DetalleCarrito> detallecarrito = new HashSet<>();
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 

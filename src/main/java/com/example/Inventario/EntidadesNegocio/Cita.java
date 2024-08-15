@@ -16,7 +16,7 @@ public class Cita {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @ManyToOne
     @JoinColumn(name = "id_UsuarioSolicitante", referencedColumnName = "id")
@@ -44,7 +44,7 @@ public class Cita {
 
     // Getters y Setters
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
