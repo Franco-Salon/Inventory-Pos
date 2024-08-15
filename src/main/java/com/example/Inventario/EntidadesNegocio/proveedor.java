@@ -5,6 +5,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.validation.constraints.NotBlank;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "proveedor")
 public class proveedor {
@@ -43,6 +46,12 @@ public class proveedor {
     @ManyToOne
     @JoinColumn(name = "id_Empresa", referencedColumnName = "id")
     private Empresa empresa;
+
+    @OneToMany(mappedBy = "proveedor")
+    private Set<Compra> compra = new HashSet<>();
+
+    @OneToMany(mappedBy = "proveedor")
+    private Set<ItemProveedor> itemproveedor = new HashSet<>();
 
     // Getters y Setters
 

@@ -1,13 +1,10 @@
 package com.example.Inventario.EntidadesNegocio;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "Cliente")
@@ -47,6 +44,15 @@ public class Cliente {
     @ManyToOne
     @JoinColumn(name = "id_Empresa", referencedColumnName = "id")
     private Empresa empresa;
+
+    @OneToMany(mappedBy = "cliente")
+    private Set<Cita> cita = new HashSet<>();
+
+    @OneToMany(mappedBy = "cliente")
+    private Set<CarritoCompra> carritocompra = new HashSet<>();
+
+    @OneToMany(mappedBy = "cliente")
+    private Set<Venta> venta = new HashSet<>();
 
     // Getters y Setters
 

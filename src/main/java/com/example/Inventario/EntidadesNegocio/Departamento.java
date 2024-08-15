@@ -5,6 +5,9 @@ import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "Departamento")
 public class Departamento {
@@ -17,6 +20,9 @@ public class Departamento {
 
     @NotBlank(message = "El campo es obligatorio")
     private String nombre;
+
+    @OneToMany(mappedBy = "departamento")
+    private Set<Municipio> municipio = new HashSet<>();
 
     public Long getId() {
         return id;

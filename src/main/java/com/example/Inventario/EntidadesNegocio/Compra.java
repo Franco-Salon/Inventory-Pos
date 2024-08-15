@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotBlank;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "Compra")
@@ -37,6 +39,9 @@ public class Compra {
     @ManyToOne
     @JoinColumn(name = "id_Empresa", referencedColumnName = "id")
     private Empresa empresa;
+
+    @OneToMany(mappedBy = "compra")
+    private Set<CompraDetalle> compradetalle = new HashSet<>();
 
     // Getters and setters
 

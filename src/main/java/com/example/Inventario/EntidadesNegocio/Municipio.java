@@ -5,8 +5,11 @@ import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
-@Table(name = "Municipio")
+@Table(name = "municipio")
 public class Municipio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +24,9 @@ public class Municipio {
 
     @NotBlank(message = "El campo es requirido")
     private String codigo;
+
+    @OneToMany(mappedBy = "municipio")
+    private Set<Item> item = new HashSet<>();
 
     public Long getId() {
         return id;

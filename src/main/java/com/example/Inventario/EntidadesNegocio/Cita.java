@@ -7,6 +7,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "Cita")
@@ -33,6 +35,12 @@ public class Cita {
     private byte estatus;
 
     private BigDecimal total;
+
+    @OneToMany(mappedBy = "cita")
+    private Set<DetalleCita> detallecita = new HashSet<>();
+
+    @OneToMany(mappedBy = "cita")
+    private Set<Venta> venta = new HashSet<>();
 
     // Getters y Setters
 

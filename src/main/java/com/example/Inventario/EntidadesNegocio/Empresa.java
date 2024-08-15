@@ -6,8 +6,11 @@ import jakarta.persistence.*;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
-@Table(name = "Empresa")
+@Table(name = "empresa")
 public class Empresa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,6 +48,26 @@ public class Empresa {
     @ManyToOne
     @JoinColumn(name = "id_Municipio", referencedColumnName = "id")
     private Municipio municipio;
+
+    @OneToMany(mappedBy = "empresa")
+    private Set<proveedor> proveedores = new HashSet<>();
+
+    @OneToMany(mappedBy = "empresa")
+    private Set<Venta> venta = new HashSet<>();
+
+    @OneToMany(mappedBy = "empresa")
+    private Set<Cliente> cliente = new HashSet<>();
+
+    @OneToMany(mappedBy = "empresa")
+    private Set<Usuario> usuario = new HashSet<>();
+
+    @OneToMany(mappedBy = "empresa")
+    private Set<Item> item = new HashSet<>();
+
+    @OneToMany(mappedBy = "empresa")
+    private Set<Compra> compra = new HashSet<>();
+
+
 
     public Long getId() {
         return id;
