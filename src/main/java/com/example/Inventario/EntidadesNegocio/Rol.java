@@ -5,8 +5,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
-@Table(name = "Rol")
+@Table(name = "rol")
 public class Rol {
 
     @Id
@@ -17,6 +20,9 @@ public class Rol {
     private String nombre;
 
     private String descripcion;
+
+    @OneToMany(mappedBy = "roles")
+    private Set<Usuario> usuarios = new HashSet<>();
 
     // Getters y Setters
 

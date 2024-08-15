@@ -5,8 +5,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.validation.constraints.NotBlank;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
-@Table(name = "TipoItem")
+@Table(name = "tipoItem")
 public class TipoItem {
 
     @Id
@@ -18,6 +21,9 @@ public class TipoItem {
 
     @NotBlank(message = "El campo es requerido")
     private String nombre;
+
+    @OneToMany(mappedBy = "tipoitem")
+    private Set<Item> item = new HashSet<>();
 
     // Getters y Setters
 

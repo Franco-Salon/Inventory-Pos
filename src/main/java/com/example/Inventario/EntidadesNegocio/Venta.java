@@ -5,9 +5,11 @@ import jakarta.validation.constraints.NotBlank;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "Venta")
+@Table(name = "venta")
 public class Venta {
 
     @Id
@@ -50,6 +52,9 @@ public class Venta {
     @ManyToOne
     @JoinColumn(name = "id_Empresa", referencedColumnName = "id")
     private Empresa empresa;
+
+    @OneToMany(mappedBy = "ventas")
+    private Set<DetalleVenta> detalleVentas = new HashSet<>();
 
     public Long getId() {
         return id;
