@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -36,11 +37,7 @@ public class Cita {
 
     private BigDecimal total;
 
-    @OneToMany(mappedBy = "citas")
-    private Set<DetalleCita> detallecita = new HashSet<>();
 
-    @OneToMany(mappedBy = "citas")
-    private Set<Venta> venta = new HashSet<>();
 
     // Getters y Setters
 

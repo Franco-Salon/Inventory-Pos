@@ -9,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -46,8 +47,7 @@ public class CarritoCompra {
     @JoinColumn(name = "id_Empresa", referencedColumnName = "id")
     private Empresa empresa;
 
-    @OneToMany(mappedBy = "carritocompras")
-    private Set<DetalleCarrito> detallecarrito = new HashSet<>();
+
 
     public long getId() {
         return id;

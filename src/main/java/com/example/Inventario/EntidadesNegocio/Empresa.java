@@ -7,6 +7,7 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -49,23 +50,7 @@ public class Empresa {
     @JoinColumn(name = "id_Municipio", referencedColumnName = "id")
     private Municipio municipio;
 
-    @OneToMany(mappedBy = "empresas")
-    private Set<proveedor> proveedores = new HashSet<>();
 
-    @OneToMany(mappedBy = "empresas")
-    private Set<Venta> venta = new HashSet<>();
-
-    @OneToMany(mappedBy = "empresas")
-    private Set<Cliente> cliente = new HashSet<>();
-
-    @OneToMany(mappedBy = "empresas")
-    private Set<Usuario> usuario = new HashSet<>();
-
-    @OneToMany(mappedBy = "empresas")
-    private Set<Item> item = new HashSet<>();
-
-    @OneToMany(mappedBy = "empresas")
-    private Set<Compra> compra = new HashSet<>();
 
 
 

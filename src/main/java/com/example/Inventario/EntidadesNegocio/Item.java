@@ -11,6 +11,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -53,23 +54,7 @@ public class Item {
     @JoinColumn(name = "id_tipoitem", referencedColumnName = "id")
     private TipoItem tipoitem;
 
-    @OneToMany(mappedBy = "items")
-    private Set<ItemDetalle> itemdetalle = new HashSet<>();
 
-    @OneToMany(mappedBy = "items")
-    private Set<ItemImagen> itemimagen = new HashSet<>();
-
-    @OneToMany(mappedBy = "items")
-    private Set<DetalleVenta> detalleventa = new HashSet<>();
-
-    @OneToMany(mappedBy = "items")
-    private Set<DetalleCita> detallecita = new HashSet<>();
-
-    @OneToMany(mappedBy = "items")
-    private Set<DetalleCarrito> detallecarrito = new HashSet<>();
-
-    @OneToMany(mappedBy = "items")
-    private Set<ItemProveedor> itemproveedor = new HashSet<>();
 
 
     // Getters y Setters

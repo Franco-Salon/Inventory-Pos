@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -37,11 +38,8 @@ public class Usuario {
     @JoinColumn(name = "id_Empresa", referencedColumnName = "id")
     private Empresa empresa;
 
-    @OneToMany(mappedBy = "usuarios")
-    private Set<Ajuste> ajustes = new HashSet<>();
 
-    @OneToMany(mappedBy = "usuarios")
-    private Set<Compra> compras = new HashSet<>();
+
     // Getters y Setters
 
     public long getId() {

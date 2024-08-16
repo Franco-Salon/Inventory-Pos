@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,8 +22,7 @@ public class Rol {
 
     private String descripcion;
 
-    @OneToMany(mappedBy = "roles")
-    private Set<Usuario> usuarios = new HashSet<>();
+
 
     // Getters y Setters
 

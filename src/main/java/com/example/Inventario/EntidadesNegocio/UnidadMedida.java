@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.validation.constraints.NotBlank;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -22,17 +23,7 @@ public class UnidadMedida {
     @NotBlank(message = "El campo es requerido")
     private String nombre;
 
-    @OneToMany(mappedBy = "unidadMedidas")
-    private Set<ItemDetalle> itemdetalle = new HashSet<>();
 
-    @OneToMany(mappedBy = "unidadMedidas")
-    private Set<Ajuste> ajustes = new HashSet<>();
-
-    @OneToMany(mappedBy = "unidadMedidas")
-    private Set<DetalleCarrito> detalleCarritos = new HashSet<>();
-
-    @OneToMany(mappedBy = "unidadMedidas")
-    private Set<DetalleVenta> detalleVentas= new HashSet<>();
 
     // Getters y Setters
 
