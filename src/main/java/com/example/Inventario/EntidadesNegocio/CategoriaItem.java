@@ -12,7 +12,7 @@ public class CategoriaItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @NotBlank(message = "El campo es requerido")
     private String nombre;
@@ -25,7 +25,7 @@ public class CategoriaItem {
 
     // Getters y Setters
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

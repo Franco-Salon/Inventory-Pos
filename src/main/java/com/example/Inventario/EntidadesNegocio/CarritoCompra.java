@@ -17,7 +17,7 @@ import java.util.Set;
 public class CarritoCompra {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @NotBlank(message = "el campo es requerida")
     private String codigo;
@@ -49,7 +49,7 @@ public class CarritoCompra {
 
 
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

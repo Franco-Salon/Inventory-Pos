@@ -15,7 +15,7 @@ public class Rol {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @NotBlank(message = "El campo es requerido")
     private String nombre;
@@ -26,12 +26,12 @@ public class Rol {
 
     // Getters y Setters
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = (long) id;
+    public void setId(Long id) {
+        this.id =  id;
     }
 
     public String getNombre() {

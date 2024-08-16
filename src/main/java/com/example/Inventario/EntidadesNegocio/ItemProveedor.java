@@ -11,7 +11,7 @@ public class ItemProveedor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "id_Item", referencedColumnName = "id")
@@ -23,11 +23,11 @@ public class ItemProveedor {
 
     // Getters y Setters
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

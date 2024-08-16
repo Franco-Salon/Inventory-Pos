@@ -15,7 +15,7 @@ public class Compra {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "id_Proveedor", referencedColumnName = "id")
@@ -45,7 +45,7 @@ public class Compra {
 
     // Getters and setters
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

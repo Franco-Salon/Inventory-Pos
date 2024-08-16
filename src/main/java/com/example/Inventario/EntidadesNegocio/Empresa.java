@@ -15,7 +15,7 @@ import java.util.Set;
 public class Empresa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @NotBlank(message = "El campo es requirido")
     private String nombre;
@@ -54,11 +54,11 @@ public class Empresa {
 
 
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

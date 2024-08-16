@@ -15,7 +15,7 @@ public class TipoItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @NotBlank(message = "El campo es requerido")
     private String codigo;
@@ -27,11 +27,11 @@ public class TipoItem {
 
     // Getters y Setters
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

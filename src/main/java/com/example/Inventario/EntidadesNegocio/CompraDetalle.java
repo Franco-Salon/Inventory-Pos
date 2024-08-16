@@ -10,7 +10,7 @@ public class CompraDetalle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "id_Compra", referencedColumnName = "id")
@@ -25,7 +25,7 @@ public class CompraDetalle {
     private BigDecimal precio;
 
     // Getters and Setters
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

@@ -14,7 +14,7 @@ import java.util.Set;
 public class Departamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @NotBlank(message = "El campo es obligatorio")
     private String codigo;
@@ -24,7 +24,7 @@ public class Departamento {
 
 
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

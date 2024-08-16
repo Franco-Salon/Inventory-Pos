@@ -9,7 +9,7 @@ public class ItemDetalle {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "id_ItemPrincipal", referencedColumnName = "id")
@@ -29,11 +29,11 @@ public class ItemDetalle {
 
     // Getters y Setters
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
