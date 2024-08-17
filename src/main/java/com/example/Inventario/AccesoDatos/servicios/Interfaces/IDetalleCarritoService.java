@@ -5,6 +5,7 @@ import java.util.Optional;
 import com.example.Inventario.EntidadesNegocio.DetalleCarrito;
 
 public interface IDetalleCarritoService {
+    
     List<DetalleCarrito> obtenerTodos();
 
     Optional<DetalleCarrito> buscarPorId(Long id);
