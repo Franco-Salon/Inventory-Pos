@@ -1,7 +1,10 @@
 package com.example.Inventario.AccesoDatos.servicios.Implementaciones;
 
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.Optional;
+
+import org.springframework.data.domain.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.Inventario.AccesoDatos.repositorios.ITipoItemRepository;
@@ -14,8 +17,8 @@ public class TipoItemService implements ITipoItemServicevice {
     private ITipoItemRepository tipoItemRepository;
 
     @Override
-    public List<TipoItem> obtenerTodos() {
-        return tipoItemRepository.findAll();
+    public Page<TipoItem> obtenerTodos(Pageable pageable) {
+        return tipoItemRepository.findAll(pageable);
     }
 
     @Override

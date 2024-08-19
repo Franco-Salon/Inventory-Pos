@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      >
+
+<head>
+    <title>Lista de tipo de items</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<div>
+    <h1>Lista de tipo de items</h1>
+    <a th:href="@{/tipoitems/create}" class="btn btn-outline-primary mb-3">Nuevo tipo de item</a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="tipoitem : ${tipoitem}">
+            <td th:text="${tipoitem.codigo}"></td>
+            <td th:text="${tipoitem.nombre}"></td>
+            <td>
+                <a th:href="@{/tipoitems/edit/{id}(id=${tipoitem.id})}" class="btn btn-secondary">Editar</a> |
+                <a th:href="@{/tipoitems/remove/{id}(id=${tipoitem.id})}" class="btn btn-danger">Eliminar</a> |
+                <a th:href="@{/tipoitems/details/{id}(id=${tipoitem.id})}" class="btn btn-info">Detalle</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</html>

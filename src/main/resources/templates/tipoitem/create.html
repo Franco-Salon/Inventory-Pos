@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Crear tipo de item</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<div>
+    <h1>Crear nuevo tipo item</h1>
+    <form th:action="@{/tipoitems/save}" th:object="${tipoitem}" method="post">
+        <div class="form-group">
+            <label for="codigo">Codigo</label>
+            <input type="text" class="form-control" th:field="*{codigo}" id="codigo" required>
+            <div class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></div>
+        </div>
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" th:field="*{nombre}" id="nombre" required>
+            <div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+        </div>
+        <hr>
+        <button type="submit" class="btn btn-primary">Guardar</button> |
+        <a th:href="@{/tipoitems}" class="btn btn-secondary">Regresar</a>
+    </form>
+</div>
+</html>
