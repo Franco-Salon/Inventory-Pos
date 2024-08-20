@@ -26,7 +26,7 @@ public class UnidadMedidaController {
     @GetMapping
     public String index(Model model, @RequestParam("page") Optional<Long> page, @RequestParam("size") Optional<Integer> size) {
         long currentPage = page.orElse(1L) - 1L; // si no está seteado se asigna 0
-        int pageSize = size.orElse(5); // tamaño de la página, se asigna 5
+        int pageSize = size.orElse(10); // tamaño de la página, se asigna 5
         Pageable pageable = PageRequest.of((int) currentPage, pageSize); // Se castea currentPage a int
 
         Page<UnidadMedida> unidadMedidas= unidadMedidaService.obtenerTodos(pageable);
