@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout"
+>
 
 <head>
     <title>Lista de tipo de items</title>
@@ -9,7 +13,7 @@
 </head>
 
 <body>
-<div>
+<div layout:fragment="content">
     <h1>Lista de tipo de items</h1>
     <a th:href="@{/tipoitems/create}" class="btn btn-outline-primary mb-3">Nuevo tipo de item</a>
     <table class="table table-striped">
