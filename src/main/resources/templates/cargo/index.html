@@ -7,15 +7,14 @@
 
 <head>
     <title>Lista Cargos</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <body>
 <div layout:fragment="content">
     <h1>Lista de Cargos</h1>
     <a th:href="@{/cargos/create}" class="btn btn-outline-primary mb-3">Nuevo Cargo</a>
-    <table class="table table-striped">
-        <thead>
+    <table class="table">
+        <thead class="table-dark">
         <tr>
 
             <th>Nombre</th>

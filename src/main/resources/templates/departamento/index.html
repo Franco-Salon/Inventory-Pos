@@ -7,15 +7,14 @@
 
 <head>
   <title>Lista Departamentos</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <body>
 <div layout:fragment="content">
   <h1>Lista de Departamentos</h1>
   <a th:href="@{/departamentos/create}" class="btn btn-outline-primary mb-3">Nuevo tipo de item</a>
-  <table class="table table-striped">
-    <thead>
+  <table class="table">
+    <thead class="table-dark">
     <tr>
       <th>Codigo</th>
       <th>Nombre</th>
