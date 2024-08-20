@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout">
+
+<head>
+    <title>Detalles Unidad de Medida</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<div layout:fragment="content">
+    <h1>Detalles Unidad de Medida</h1>
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">Codigo</dt>
+            <dd class="col-sm-10" th:text="${unidadmedida.codigo}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Nombre</dt>
+            <dd class="col-sm-10" th:text="${unidadmedida.nombre}"></dd>
+        </dl>
+
+        <a th:href="@{/unidadmedidas/edit/{id}(id=${unidadmedida.id})}" class="btn btn-outline-info">Editar</a> |
+        <a th:href="@{/unidadmedidas}" class="btn btn-outline-secondary">Regresar</a>
+    </div>
+
+</div>
+
+</html>

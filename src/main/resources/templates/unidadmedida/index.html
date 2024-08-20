@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout">
+
+<head>
+  <title>Lista de unidad de medida</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div layout:fragment="content">
+  <h1>Lista de Unidad de Medida</h1>
+  <a th:href="@{/unidadmedidas/create}" class="btn btn-outline-primary mb-3">Nueva Unidad</a>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Codigo</th>
+      <th>Nombre</th>
+      <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="unidadmedida : ${unidadmedida}">
+      <td th:text="${unidadmedida.codigo}"></td>
+      <td th:text="${unidadmedida.nombre}"></td>
+      <td>
+        <a th:href="@{/unidadmedidas/edit/{id}(id=${unidadmedida.id})}" class="btn btn-secondary">Editar</a> |
+        <a th:href="@{/unidadmedidas/remove/{id}(id=${unidadmedida.id})}" class="btn btn-danger">Eliminar</a> |
+        <a th:href="@{/unidadmedidas/details/{id}(id=${unidadmedida.id})}" class="btn btn-info">Detalle</a>
+
+
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+</body>
+
+</html>
