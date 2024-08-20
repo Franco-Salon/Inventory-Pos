@@ -4,6 +4,8 @@ import com.example.Inventario.AccesoDatos.repositorios.IDepartamentoRepository;
 import com.example.Inventario.AccesoDatos.servicios.Interfaces.IDepartamentoService;
 import com.example.Inventario.EntidadesNegocio.Departamento;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,8 +17,8 @@ public class DepartamentoService implements IDepartamentoService {
     private IDepartamentoRepository departamentoRepository;
 
     @Override
-    public List<Departamento> obtenerTodos() {
-        return departamentoRepository.findAll();
+    public Page<Departamento> obtenerTodos(Pageable pageable) {
+        return departamentoRepository.findAll(pageable);
     }
 
     @Override

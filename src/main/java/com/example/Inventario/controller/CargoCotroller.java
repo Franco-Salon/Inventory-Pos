@@ -2,7 +2,6 @@ package com.example.Inventario.controller;
 
 import com.example.Inventario.AccesoDatos.servicios.Interfaces.ICargoService;
 import com.example.Inventario.EntidadesNegocio.Cargo;
-import com.example.Inventario.EntidadesNegocio.UnidadMedida;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
