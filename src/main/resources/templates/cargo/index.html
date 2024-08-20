@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout"
+>
+
+<head>
+    <title>Lista Cargos</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+<div layout:fragment="content">
+    <h1>Lista de Cargos</h1>
+    <a th:href="@{/cargos/create}" class="btn btn-outline-primary mb-3">Nuevo Cargo</a>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+
+            <th>Nombre</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="cargo : ${cargo}">
+            <td th:text="${cargo.nombre}"></td>
+            <td>
+                <a th:href="@{/cargos/edit/{id}(id=${cargo.id})}" class="btn btn-secondary">Editar</a> |
+                <a th:href="@{/cargos/remove/{id}(id=${cargo.id})}" class="btn btn-danger">Eliminar</a> |
+                <a th:href="@{/cargos/details/{id}(id=${cargo.id})}" class="btn btn-info">Detalle</a>
+
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+</body>
+
+</html>

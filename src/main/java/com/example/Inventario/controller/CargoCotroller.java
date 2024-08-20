@@ -1,6 +1,7 @@
 package com.example.Inventario.controller;
 
-import com.example.Inventario.AccesoDatos.servicios.Interfaces.IUnidadMedidaService;
+import com.example.Inventario.AccesoDatos.servicios.Interfaces.ICargoService;
+import com.example.Inventario.EntidadesNegocio.Cargo;
 import com.example.Inventario.EntidadesNegocio.UnidadMedida;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,10 +19,11 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Controller
-@RequestMapping("unidadmedidas")
-public class UnidadMedidaController {
+@RequestMapping("cargos")
+public class CargoCotroller {
+
     @Autowired
-    private IUnidadMedidaService unidadMedidaService;
+    private ICargoService cargoService;
 
     @GetMapping
     public String index(Model model, @RequestParam("page") Optional<Long> page, @RequestParam("size") Optional<Integer> size) {
@@ -29,10 +31,10 @@ public class UnidadMedidaController {
         int pageSize = size.orElse(5); // tamaño de la página, se asigna 5
         Pageable pageable = PageRequest.of((int) currentPage, pageSize); // Se castea currentPage a int
 
-        Page<UnidadMedida> unidadMedidas= unidadMedidaService.obtenerTodos(pageable);
-        model.addAttribute("unidadmedida", unidadMedidas);
+        Page<Cargo> cargos= cargoService.obtenerTodos(pageable);
+        model.addAttribute("cargo", cargos);
 
-        int totalPages = unidadMedidas.getTotalPages();
+        int totalPages = cargos.getTotalPages();
         if (totalPages > 0) {
             List<Long> pageNumbers = IntStream.rangeClosed(1, totalPages)
                     .mapToLong(i -> i) // Convertir a Long
@@ -41,54 +43,54 @@ public class UnidadMedidaController {
             model.addAttribute("pageNumbers", pageNumbers);
         }
 
-        return "unidadmedida/index";
+        return "cargo/index";
     }
 
     @GetMapping("/create")
     public String create(Model model) {
-        model.addAttribute("unidadmedida", new UnidadMedida());
-        return "unidadmedida/create";
+        model.addAttribute("cargo", new Cargo());
+        return "cargo/create";
     }
 
     @PostMapping("/save")
-    public String save(@ModelAttribute UnidadMedida unidadMedida, BindingResult result, RedirectAttributes attributes) {
+    public String save(@ModelAttribute Cargo cargos, BindingResult result, RedirectAttributes attributes) {
         if (result.hasErrors()) {
-            return "unidadmedida/create";
+            return "cargo/create";
         }
-        unidadMedidaService.crearOEditar(unidadMedida);
-        attributes.addFlashAttribute("msg", "la Unidad de medida esta guardado correctamente");
-        return "redirect:/unidadmedidas";
+        cargoService.crearOEditar(cargos);
+        attributes.addFlashAttribute("msg", "el cargo se guardo correctamente");
+        return "redirect:/cargos";
     }
 
     @GetMapping("/details/{id}")
     public String details(@PathVariable("id") Long id, Model model) {
-        UnidadMedida unidadMedida= unidadMedidaService.buscarPorId(id).orElseThrow(() -> new IllegalArgumentException("tipo item no encontrado"));
-        model.addAttribute("unidadmedida", unidadMedida);
-        return "unidadmedida/details";
+        Cargo cargos= cargoService.buscarPorId(id).orElseThrow(() -> new IllegalArgumentException("El Cargo no encontrado"));
+        model.addAttribute("cargo", cargos);
+        return "cargo/details";
     }
 
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") Long id, Model model) {
-        UnidadMedida unidadMedida= unidadMedidaService.buscarPorId(id).orElseThrow(() -> new IllegalArgumentException("tipo item no encontrado"));
-        model.addAttribute("unidadmedida", unidadMedida);
-        return "unidadmedida/edit";
+        Cargo cargos= cargoService.buscarPorId(id).orElseThrow(() -> new IllegalArgumentException("El Cargo no  encontrado"));
+        model.addAttribute("cargo", cargos);
+        return "cargo/edit";
     }
 
     @GetMapping("/remove/{id}")
     public String remove(@PathVariable("id") Long id, Model model) {
-        Optional<UnidadMedida> unidadMedida = unidadMedidaService.buscarPorId(id);
-        if (unidadMedida.isPresent()) {
-            model.addAttribute("unidadmedida", unidadMedida.get());
-            return "unidadmedida/delete";
+        Optional<Cargo> cargos = cargoService.buscarPorId(id);
+        if (cargos.isPresent()) {
+            model.addAttribute("cargo", cargos.get());
+            return "cargo/delete";
         } else {
-            return "redirect:/unidadmedidas";
+            return "redirect:/cargos";
         }
     }
 
     @PostMapping("/delete")
-    public String delete(UnidadMedida unidadMedida, RedirectAttributes attributes) {
-        unidadMedidaService.eliminarPorId(unidadMedida.getId());
-        attributes.addFlashAttribute("msg", "Unidad de medida eliminado correctamente");
-        return "redirect:/unidadmedidas";
+    public String delete(Cargo cargos, RedirectAttributes attributes) {
+        cargoService.eliminarPorId(cargos.getId());
+        attributes.addFlashAttribute("msg", "Cargo eliminado correctamente");
+        return "redirect:/cargos";
     }
 }
