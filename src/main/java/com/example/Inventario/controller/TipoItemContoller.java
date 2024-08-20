@@ -64,7 +64,7 @@ public class TipoItemContoller {
     @GetMapping("/details/{id}")
     public String details(@PathVariable("id") Long id, Model model) {
         TipoItem tipoItem= tipoItemServicevice.buscarPorId(id).orElseThrow(() -> new IllegalArgumentException("tipo item no encontrado"));
-        model.addAttribute("tipoitems", tipoItem);
+        model.addAttribute("tipoitem", tipoItem);
         return "tipoitem/details";
     }
 
@@ -75,21 +75,10 @@ public class TipoItemContoller {
         return "tipoitem/edit";
     }
 
-    @GetMapping("/remove/{id}")
-    public String remove(@PathVariable("id") Long id, Model model) {
-        Optional<TipoItem> tipoItem = tipoItemServicevice.buscarPorId(id);
-        if (tipoItem.isPresent()) {
-            model.addAttribute("TipoItem", tipoItem.get());
-            return "tipoitem/delete";
-        } else {
-            return "redirect:/tipoitems";
-        }
-    }
-
-    @PostMapping("/delete")
-    public String delete(TipoItem tipoItem, RedirectAttributes attributes) {
-        tipoItemServicevice.eliminarPorId(tipoItem.getId());
-        attributes.addFlashAttribute("msg", "tipo item eliminado correctamente");
+    @PostMapping("/delete/{id}")
+    public String delete(@PathVariable("id") Long id, RedirectAttributes attributes) {
+        tipoItemServicevice.eliminarPorId(id);
+        attributes.addFlashAttribute("msg", "Tipo item eliminado correctamente");
         return "redirect:/tipoitems";
     }
 }

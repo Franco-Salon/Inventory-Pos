@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>Lista de tipo de items</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
+
+<body>
 <div>
     <h1>Lista de tipo de items</h1>
     <a th:href="@{/tipoitems/create}" class="btn btn-outline-primary mb-3">Nuevo tipo de item</a>
@@ -24,12 +26,64 @@
             <td th:text="${tipoitem.nombre}"></td>
             <td>
                 <a th:href="@{/tipoitems/edit/{id}(id=${tipoitem.id})}" class="btn btn-secondary">Editar</a> |
-                <a th:href="@{/tipoitems/remove/{id}(id=${tipoitem.id})}" class="btn btn-danger">Eliminar</a> |
+                <a href="#" th:attr="data-id=${tipoitem.id}" class="btn btn-danger btn-eliminar">Eliminar</a> |
                 <a th:href="@{/tipoitems/details/{id}(id=${tipoitem.id})}" class="btn btn-info">Detalle</a>
+
+                <!-- Formulario oculto para la eliminación -->
+                <form th:action="@{/tipoitems/delete/{id}(id=${tipoitem.id})}" method="post" th:id="'deleteForm' + ${tipoitem.id}" style="display: none;">
+                    <input type="hidden" name="_method" value="DELETE" />
+                </form>
             </td>
         </tr>
         </tbody>
     </table>
 </div>
+
+<!-- SweetAlert2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Script personalizado -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Mostrar alerta si el registro fue eliminado correctamente
+        const eliminado = /*[[${eliminado}]]*/ false;
+        if (eliminado) {
+            Swal.fire({
+                title: '¡Eliminado!',
+                text: 'El tipo de item ha sido eliminado correctamente.',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+        }
+
+        // Seleccionar todos los botones de eliminar
+        const eliminarBtns = document.querySelectorAll('.btn-eliminar');
+
+        eliminarBtns.forEach(function (btn) {
+            btn.addEventListener('click', function (event) {
+                event.preventDefault(); // Evita la acción por defecto del enlace
+
+                const itemId = this.getAttribute('data-id'); // Obtener el id del item
+
+                // Mostrar alerta de SweetAlert2 para confirmar eliminación
+                Swal.fire({
+                    title: '¿Estás seguro?',
+                    text: "¡No podrás revertir esto!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sí, eliminarlo',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Enviar el formulario de eliminación
+                        document.getElementById('deleteForm' + itemId).submit();
+                    }
+                });
+            });
+        });
+    });
+</script>
+</body>
 
 </html>

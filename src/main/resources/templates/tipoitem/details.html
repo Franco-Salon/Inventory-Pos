@@ -1,10 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 
-</body>
+<head>
+    <title>Detalles tipo de item</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<div>
+    <h1>Detalles  tipo item</h1>
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">Codigo</dt>
+            <dd class="col-sm-10" th:text="${tipoitem.codigo}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2">Nombre</dt>
+            <dd class="col-sm-10" th:text="${tipoitem.nombre}"></dd>
+        </dl>
+
+        <a th:href="@{/tipoitems/edit/{id}(id=${tipoitem.id})}" class="btn btn-outline-info">Editar</a> |
+        <a th:href="@{/tipoitems}" class="btn btn-outline-secondary">Regresar</a>
+    </div>
+
+</div>
+
 </html>
