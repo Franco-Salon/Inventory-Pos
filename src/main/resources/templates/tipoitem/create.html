@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout">
 
 <head>
     <title>Crear tipo de item</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-<div>
+<div layout:fragment="content">
     <h1>Crear nuevo tipo item</h1>
     <form th:action="@{/tipoitems/save}" th:object="${tipoitem}" method="post">
         <div class="form-group">

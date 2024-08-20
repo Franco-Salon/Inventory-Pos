@@ -75,9 +75,20 @@ public class TipoItemContoller {
         return "tipoitem/edit";
     }
 
-    @PostMapping("/delete/{id}")
-    public String delete(@PathVariable("id") Long id, RedirectAttributes attributes) {
-        tipoItemServicevice.eliminarPorId(id);
+    @GetMapping("/remove/{id}")
+    public String remove(@PathVariable("id") Long id, Model model) {
+        Optional<TipoItem> tipoItem = tipoItemServicevice.buscarPorId(id);
+        if (tipoItem.isPresent()) {
+            model.addAttribute("tipoitem", tipoItem.get());
+            return "tipoItem/delete";
+        } else {
+            return "redirect:/tipoitems";
+        }
+    }
+
+    @PostMapping("/delete")
+    public String delete(TipoItem tipoItem, RedirectAttributes attributes) {
+        tipoItemServicevice.eliminarPorId(tipoItem.getId());
         attributes.addFlashAttribute("msg", "Tipo item eliminado correctamente");
         return "redirect:/tipoitems";
     }
