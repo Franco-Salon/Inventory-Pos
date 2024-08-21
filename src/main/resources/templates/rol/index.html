@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout"
+>
+
+<head>
+    <title>Lista Roles </title>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <h1>Lista de Cargos</h1>
+    <a th:href="@{/roles/create}" class="btn btn-outline-primary mb-3">Nuevo Rol</a>
+    <table class="table">
+        <thead class="table-dark">
+        <tr>
+
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="rol : ${rol}">
+            <td th:text="${rol.nombre}"></td>
+            <td th:text="${rol.descripcion}"></td>
+            <td>
+                <a th:href="@{/roles/edit/{id}(id=${rol.id})}" class="btn btn-secondary">Editar</a> |
+                <a th:href="@{/roles/remove/{id}(id=${rol.id})}" class="btn btn-danger">Eliminar</a> |
+                <a th:href="@{/roles/details/{id}(id=${rol.id})}" class="btn btn-info">Detalle</a>
+
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+</body>
+
+</html>
