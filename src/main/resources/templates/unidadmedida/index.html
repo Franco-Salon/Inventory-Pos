@@ -6,6 +6,7 @@
 
 <head>
   <title>Lista de unidad de medida</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 <div layout:fragment="content">
@@ -27,13 +28,29 @@
         <a th:href="@{/unidadmedidas/edit/{id}(id=${unidadmedida.id})}" class="btn btn-secondary">Editar</a> |
         <a th:href="@{/unidadmedidas/remove/{id}(id=${unidadmedida.id})}" class="btn btn-danger">Eliminar</a> |
         <a th:href="@{/unidadmedidas/details/{id}(id=${unidadmedida.id})}" class="btn btn-info">Detalle</a>
-
-
       </td>
     </tr>
     </tbody>
   </table>
 
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item" th:classappend="${unidadmedida.pageable.pageNumber == 0} ? 'disabled'">
+        <a class="page-link" th:href="@{/unidadmedidas(page=${unidadmedida.pageable.pageNumber - 1}, size=${unidadmedida.pageable.pageSize})}">Anterior</a>
+      </li>
+
+      <li class="page-item" th:each="pageNum : ${pageNumbers}"
+          th:if="${pageNum >= unidadmedida.pageable.pageNumber - 2} and ${pageNum <= unidadmedida.pageable.pageNumber + 2}"
+          th:classappend="${pageNum == unidadmedida.pageable.pageNumber + 1} ? 'active'">
+        <a class="page-link" th:href="@{/unidadmedidas(page=${pageNum}, size=${unidadmedida.pageable.pageSize})}"
+           th:text="${pageNum}">1</a>
+      </li>
+
+      <li class="page-item" th:classappend="${unidadmedida.pageable.pageNumber + 1 == unidadmedida.totalPages} ? 'disabled'">
+        <a class="page-link" th:href="@{/unidadmedidas(page=${unidadmedida.pageable.pageNumber + 1}, size=${unidadmedida.pageable.pageSize})}">Siguiente</a>
+      </li>
+    </ul>
+  </nav>
 </div>
 </body>
 

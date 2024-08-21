@@ -7,6 +7,7 @@
 
 <head>
     <title>Lista Cargos</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -16,7 +17,6 @@
     <table class="table">
         <thead class="table-dark">
         <tr>
-
             <th>Nombre</th>
             <th>Acciones</th>
         </tr>
@@ -28,15 +28,30 @@
                 <a th:href="@{/cargos/edit/{id}(id=${cargo.id})}" class="btn btn-secondary">Editar</a> |
                 <a th:href="@{/cargos/remove/{id}(id=${cargo.id})}" class="btn btn-danger">Eliminar</a> |
                 <a th:href="@{/cargos/details/{id}(id=${cargo.id})}" class="btn btn-info">Detalle</a>
-
-
             </td>
         </tr>
         </tbody>
     </table>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item" th:classappend="${cargo.pageable.pageNumber == 0} ? 'disabled'">
+                <a class="page-link" th:href="@{/cargos(page=${cargo.pageable.pageNumber - 1}, size=${cargo.pageable.pageSize})}">Anterior</a>
+            </li>
+
+            <li class="page-item" th:each="pageNum : ${pageNumbers}"
+                th:if="${pageNum >= cargo.pageable.pageNumber - 2} and ${pageNum <= cargo.pageable.pageNumber + 2}"
+                th:classappend="${pageNum == cargo.pageable.pageNumber + 1} ? 'active'">
+                <a class="page-link" th:href="@{/cargos(page=${pageNum}, size=${cargo.pageable.pageSize})}"
+                   th:text="${pageNum}">1</a>
+            </li>
+
+            <li class="page-item" th:classappend="${cargo.pageable.pageNumber + 1 == cargo.totalPages} ? 'disabled'">
+                <a class="page-link" th:href="@{/cargos(page=${cargo.pageable.pageNumber + 1}, size=${cargo.pageable.pageSize})}">Siguiente</a>
+            </li>
+        </ul>
+    </nav>
 </div>
-
-
 
 </body>
 
