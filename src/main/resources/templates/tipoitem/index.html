@@ -7,6 +7,7 @@
 
 <head>
     <title>Lista de tipo de items</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -29,15 +30,30 @@
                 <a th:href="@{/tipoitems/edit/{id}(id=${tipoitem.id})}" class="btn btn-secondary">Editar</a> |
                 <a th:href="@{/tipoitems/remove/{id}(id=${tipoitem.id})}" class="btn btn-danger">Eliminar</a> |
                 <a th:href="@{/tipoitems/details/{id}(id=${tipoitem.id})}" class="btn btn-info">Detalle</a>
-
-
             </td>
         </tr>
         </tbody>
     </table>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item" th:classappend="${tipoitem.pageable.pageNumber == 0} ? 'disabled'">
+                <a class="page-link" th:href="@{/tipoitems(page=${tipoitem.pageable.pageNumber - 1}, size=${tipoitem.pageable.pageSize})}">Anterior</a>
+            </li>
+
+            <li class="page-item" th:each="pageNum : ${pageNumbers}"
+                th:if="${pageNum >= tipoitem.pageable.pageNumber - 2} and ${pageNum <= tipoitem.pageable.pageNumber + 2}"
+                th:classappend="${pageNum == tipoitem.pageable.pageNumber + 1} ? 'active'">
+                <a class="page-link" th:href="@{/tipoitems(page=${pageNum}, size=${tipoitem.pageable.pageSize})}"
+                   th:text="${pageNum}">1</a>
+            </li>
+
+            <li class="page-item" th:classappend="${tipoitem.pageable.pageNumber + 1 == tipoitem.totalPages} ? 'disabled'">
+                <a class="page-link" th:href="@{/tipoitems(page=${tipoitem.pageable.pageNumber + 1}, size=${tipoitem.pageable.pageSize})}">Siguiente</a>
+            </li>
+        </ul>
+    </nav>
 </div>
-
-
 
 </body>
 
