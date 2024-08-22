@@ -10,15 +10,18 @@
 <div layout:fragment="content">
     <h1>Crear Unidade de Medida</h1>
     <form th:action="@{/unidadmedidas/save}" th:object="${unidadmedida}" method="post">
-        <div class="form-group">
-            <label for="codigo">Codigo</label>
-            <input type="text" class="form-control" th:field="*{codigo}" id="codigo" required>
-            <div class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></div>
-        </div>
-        <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input type="text" class="form-control" th:field="*{nombre}" id="nombre" required>
-            <div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+        <br>
+        <div class="row g-2">
+            <div class="form-floating mb-3 col-md-4">
+                <input type="text" class="form-control" th:field="*{codigo}" id="codigo" required>
+                <label for="codigo">Codigo</label>
+                <div class="text-danger" th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}"></div>
+            </div>
+            <div class="form-floating col-md-6">
+                <input type="text" class="form-control" th:field="*{nombre}" id="nombre" required>
+                <label for="nombre">Nombre</label>
+                <div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+            </div>
         </div>
         <hr>
         <button type="submit" class="btn btn-primary">Guardar</button> |

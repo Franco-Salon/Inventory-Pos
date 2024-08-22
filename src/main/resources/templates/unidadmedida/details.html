@@ -12,12 +12,12 @@
     <div>
         <hr />
         <dl class="row">
-            <dt class="col-sm-2">Codigo</dt>
-            <dd class="col-sm-10" th:text="${unidadmedida.codigo}"></dd>
+            <dt class="col-sm-2 h3">Codigo:</dt>
+            <dd class="col-sm-10 h3" th:text="${unidadmedida.codigo}"></dd>
         </dl>
         <dl class="row">
-            <dt class="col-sm-2">Nombre</dt>
-            <dd class="col-sm-10" th:text="${unidadmedida.nombre}"></dd>
+            <dt class="col-sm-2 h3">Nombre:</dt>
+            <dd class="col-sm-10 h3" th:text="${unidadmedida.nombre}"></dd>
         </dl>
 
         <a th:href="@{/unidadmedidas/edit/{id}(id=${unidadmedida.id})}" class="btn btn-outline-info">Editar</a> |

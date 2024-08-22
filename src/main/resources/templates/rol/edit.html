@@ -12,19 +12,18 @@
     <h1>Editar Rol</h1>
     <form th:action="@{/roles/save}" th:object="${rol}" method="post">
         <input type="hidden" th:field="*{id}">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="nombre">Nombre</label>
+        <br>
+        <div class="row g-2">
+                <div class="form-floating mb-3 col-md-6">
                     <input type="text" class="form-control" th:field="*{nombre}" id="nombre" placeholder="Escriba el nombre" required>
+                    <label for="nombre">Nombre</label>
                 </div>
 
-                <div class="col-md-6">
-                    <div class="form-group">
+
+                 <div class="form-floating">
+                        <textarea type="text" class="form-control" th:field="*{descripcion}" id="descripcion" placeholder="Escriba la descripcion" required></textarea>
                         <label for="descripcion">Descripcion</label>
-                        <input type="text" class="form-control" th:field="*{descripcion}" id="descripcion" placeholder="Escriba la descripcion" required>
-                    </div>
-            </div>
+                 </div>
         </div>
         <hr>
         <button type="submit" class="btn btn-primary">Guardar</button> |

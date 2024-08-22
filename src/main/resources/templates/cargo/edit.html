@@ -12,13 +12,12 @@
     <h1>Editar Cargo</h1>
     <form th:action="@{/cargos/save}" th:object="${cargo}" method="post">
         <input type="hidden" th:field="*{id}">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="nombre">Nombre</label>
+        <br>
+        <div class="row g-2">
+                <div class="form-floating col-md-6">
                     <input type="text" class="form-control" th:field="*{nombre}" id="nombre" placeholder="Escriba el nombre" required>
+                    <label for="nombre">Nombre</label>
                 </div>
-            </div>
         </div>
         <hr>
         <button type="submit" class="btn btn-primary">Guardar</button> |
