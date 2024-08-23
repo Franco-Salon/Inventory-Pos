@@ -14,4 +14,6 @@ public interface IDepartamentoService {
     Departamento crearOEditar(Departamento departamento);
 
     void eliminarPorId(Long id);
+
+    List<Departamento> listarTodosLosRoles();
 }

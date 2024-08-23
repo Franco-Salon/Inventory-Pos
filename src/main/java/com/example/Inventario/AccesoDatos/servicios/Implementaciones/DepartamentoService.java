@@ -35,4 +35,9 @@ public class DepartamentoService implements IDepartamentoService {
     public void eliminarPorId(Long id) {
         departamentoRepository.deleteById(id);
     }
+
+    @Override
+    public List<Departamento> listarTodosLosRoles() {
+        return departamentoRepository.findAll();
+    }
 }
