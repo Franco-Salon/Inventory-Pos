@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout">
+
+<head>
+    <title>Lista Municipio</title>
+</head>
+<body>
+
+<div layout:fragment="content">
+    <h1>Lista de los municipios</h1>
+    <a th:href="@{/municipios/create}" class="btn btn-outline-primary mb-3">Nuevo municipio</a>
+    <table class="table">
+        <thead class="table-dark">
+        <tr>
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Departamento</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="municipio : ${municipio}">
+            <td th:text="${municipio.codigo}"></td>
+            <td th:text="${municipio.nombre}"></td>
+            <td th:text="${municipio.departamento.nombre}"></td>
+            <td>
+                <a th:href="@{/municipios/edit/{id}(id=${municipio.id})}" class="btn btn-secondary">Editar</a> |
+                <a th:href="@{/municipios/remove/{id}(id=${municipio.id})}" class="btn btn-danger">Eliminar</a> |
+                <a th:href="@{/municipios/details/{id}(id=${municipio.id})}" class="btn btn-info">Detalle</a>
+
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
