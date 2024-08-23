@@ -1,10 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Editar Usuario</title>
 </head>
 <body>
+<div layout:fragment="content">
+    <h1>Editar Usuario</h1>
+    <form th:action="@{/usuarios/save}" th:object="${usuario}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <br>
+        <div class="row g-2">
+            <div class="form-floating mb-3 col-md-6">
+                <input type="text" class="form-control" th:field="*{nombre}" id="nombre"  required>
+                <label for="nombre">Nombre</label>
+            </div>
 
+
+            <div class="form-floating mb-3 col-md-6">
+                <input type="text" class="form-control" th:field="*{correo}" id="correo" required>
+                <label for="correo">Correo</label>
+            </div>
+
+            <div class="form-floating mb-3 col-md-6">
+                <input type="number" class="form-control" th:field="*{telefono}" id="telefono" required>
+                <label for="telefono">Telefono</label>
+            </div>
+
+            <div class="form-floating mb-3 col-md-6">
+                <input type="password" class="form-control" th:field="*{password}" id="password" required>
+                <label for="password">Contraseña</label>
+            </div>
+
+            <div class="form-floating mb-3 col-md-6">
+                <input type="number" class="form-control" th:field="*{dui}" id="dui" required>
+                <label for="dui">Dui</label>
+            </div>
+
+            <div class="form-floating mb-3 col-md-6">
+                <select      class="form-select" aria-label="Default select example" id="rol"  th:field="*{rol.id}" required>
+                    <th:block th:each="rol : ${rol}">
+                      <option selected th:value="${rol.id}" th:text="${rol.nombre}"></option>
+                    </th:block>
+                </select>
+                <label for="rol">Rol</label>
+            </div>
+
+        </div>
+        <hr>
+        <button type="submit" class="btn btn-primary">Guardar</button> |
+        <a th:href="@{/usuarios}" class="btn btn-outline-secondary">Regresar</a>
+    </form>
+
+</div>
 </body>
 </html>

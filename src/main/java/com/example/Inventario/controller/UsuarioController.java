@@ -66,14 +66,17 @@ public class UsuarioController {
 
     @GetMapping("/details/{id}")
     public String details(@PathVariable("id") Long id, Model model) {
-        Usuario usuarios= usuarioService.buscarPorId(id).orElseThrow(() -> new IllegalArgumentException("tipo item no encontrado"));
+        Usuario usuarios= usuarioService.buscarPorId(id).get();
         model.addAttribute("usuario", usuarios);
         return "usuario/details";
     }
 
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") Long id, Model model) {
-        Usuario usuario = usuarioService.buscarPorId(id).orElseThrow(() -> new IllegalArgumentException("tipo item no encontrado"));
+
+        List<Rol> rol = rolService.listarTodosLosRoles();
+        Usuario usuario = usuarioService.buscarPorId(id).get();
+        model.addAttribute("rol", rol);
         model.addAttribute("usuario", usuario);
         return "usuario/edit";
     }
