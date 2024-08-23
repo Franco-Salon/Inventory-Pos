@@ -1,10 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Editar Municipio</title>
 </head>
 <body>
+<div layout:fragment="content">
+    <h1>Editar Municipio</h1>
+    <form th:action="@{/municipios/save}" th:object="${municipio}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <br>
+        <div class="row g-2">
+            <div class="form-floating mb-3 col-md-4">
+                <input type="text" class="form-control" th:field="*{codigo}" id="codigo" placeholder="Escriba el codigo" required>
+                <label for="codigo">Codigo</label>
+            </div>
 
+            <div class="form-floating mb-3 col-md-6">
+                <input type="text" class="form-control" th:field="*{nombre}" id="nombre"  required>
+                <label for="nombre">Nombre</label>
+            </div>
+
+            <div class="form-floating mb-3 col-md-6">
+                <select class="form-select" aria-label="Default select example" id="departamento"  th:field="*{departamento.id}" required>
+                    <th:block th:each="departamento : ${departamento}">
+                        <option selected th:value="${departamento.id}" th:text="${departamento.nombre}"></option>
+                    </th:block>
+                </select>
+                <label for="departamento">Departamento</label>
+            </div>
+        </div>
+        <hr>
+        <button type="submit" class="btn btn-primary">Guardar</button> |
+        <a th:href="@{/municipios}" class="btn btn-outline-secondary">Regresar</a>
+    </form>
+</div>
 </body>
 </html>
