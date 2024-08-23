@@ -51,7 +51,7 @@ public class MunicipioController {
 
     @GetMapping("/create")
     public String create(Model model) {
-        model.addAttribute("usuario", new Municipio());
+        model.addAttribute("municipio", new Municipio());
         model.addAttribute("departamento", departamentoService.listarTodosLosRoles()); // Obtener todos los roles disponibles
         return "municipio/create";
     }
