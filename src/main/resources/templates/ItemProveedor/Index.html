@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout">
+
+<head>
+    <title>Lista de Usuarios</title>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <h1>Lista de ItemProveedor</h1>
+    <a th:href="@{/itemproveedor/create}" class="btn btn-outline-primary mb-3">Nuevo Itemproveedor</a>
+    <table class="table">
+        <thead class="table-dark">
+        <tr>
+            <th>Item</th>
+            <th>Proveedor</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${Lista_ItemProveedores}">
+            <td th:text="${item.item.nombre}"></td>
+            <td th:text="${item.proveedor.nombre}"></td>
+            <td>
+                <a th:href="@{/itemproveedor/edit/{id}(id=${item.id})}" class="btn btn-secondary">Editar</a> |
+                <a th:href="@{/itemproveedor/remove/{id}(id=${item.id})}" class="btn btn-danger">Eliminar</a> |
+                <a th:href="@{/itemproveedor/details/{id}(id=${item.id})}" class="btn btn-info">Detalle</a>
+
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

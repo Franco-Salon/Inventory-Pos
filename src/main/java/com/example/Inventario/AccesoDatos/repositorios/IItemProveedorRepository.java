@@ -6,5 +6,5 @@ import com.example.Inventario.EntidadesNegocio.ItemProveedor;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IItemProveedorRepository extends JpaRepository<ItemProveedor, Long>{
+public interface IItemProveedorRepository extends JpaRepository<ItemProveedor, Integer>{
 }

@@ -7,9 +7,9 @@ import com.example.Inventario.EntidadesNegocio.ItemProveedor;
 public interface IItemProveedorService {
     List<ItemProveedor> obtenerTodos();
 
-    Optional<ItemProveedor> buscarPorId(Long id);
+    Optional<ItemProveedor> buscarPorId(Integer id);
 
     ItemProveedor crearOEditar(ItemProveedor itemProveedor);
 
-    void eliminarPorId(Long id);
+    void eliminarPorId(Integer id);
 }

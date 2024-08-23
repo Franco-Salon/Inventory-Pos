@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout">
+
+<head>
+    <title>Crear Usuario</title>
+</head>
+<div layout:fragment="content">
+    <h1>Crear nuevo ItemProveedor</h1>
+    <br>
+    <form th:action="@{/itemproveedor/save}" th:object="${itemProveedor}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <br>
+        <div class="row g-2">
+
+            <!-- Item -->
+            <div class="form-floating mb-3 col-md-6">
+                <select  class="form-select" aria-label="Default select example" id="item"  th:field="*{item.id}" required>
+                    <option value="">Seleccione un item</option>
+                    <option selected th:each="item : ${Lista_Item}"
+                            th:value="${item.id}"
+                            th:text="${item.nombre}">
+                    </option>
+                </select>
+                <label for="item">Item</label>
+            </div>
+
+            <!-- Proveedor -->
+            <div class="form-floating mb-3 col-md-6">
+                <select  class="form-select" aria-label="Default select example" id="proveedor"  th:field="*{proveedor.id}" required>
+                    <option value="">Seleccione un Proveedor</option>
+                    <option selected th:each="proveedor : ${Lista_Proveedor}"
+                            th:value="${proveedor.id}"
+                            th:text="${proveedor.nombre}">
+                    </option>
+                </select>
+                <label for="proveedor">Proveedor</label>
+            </div>
+
+        </div>
+
+        <hr>
+        <button type="submit" class="btn btn-primary">Guardar</button> |
+        <a th:href="@{/itemproveedor/index}" class="btn btn-secondary">Regresar</a>
+    </form>
+</div>
+</html>

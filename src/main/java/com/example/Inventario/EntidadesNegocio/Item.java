@@ -55,6 +55,19 @@ public class Item {
     private TipoItem tipoitem;
 
 
+    // Referencia De Tablas Item - ItemProveedor:
+    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<ItemProveedor> itemProveedores = new HashSet<>();
+
+    //  Accesors Item - ItemProveedor:
+    public Set<ItemProveedor> getItemProveedores()
+    {
+        return itemProveedores;
+    }
+    public void setItemProveedores(Set<ItemProveedor> itemProveedores)
+    {
+        this.itemProveedores = itemProveedores;
+    }
 
 
     // Getters y Setters

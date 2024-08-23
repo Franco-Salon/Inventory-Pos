@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout">
+
+<head>
+    <title>Eliminar</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+<div layout:fragment="content">
+    <h1>Eliminar ItemProveedor</h1>
+    <h2>¿Está seguro que desea eliminar este registro?</h2>
+
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2 h3">Item:</dt>
+            <dd class="col-sm-10 h3" th:text="${Objeto_Obtenido.item.nombre}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2 h3">Proveedor:</dt>
+            <dd class="col-sm-10 h3" th:text="${Objeto_Obtenido.proveedor.nombre}"></dd>
+        </dl>
+
+
+        <!-- Formulario para confirmar la eliminación -->
+        <form th:action="@{/itemproveedor/delete}" method="post">
+            <!-- Campo oculto para enviar el ID del usuario a eliminar -->
+            <input type="hidden" name="id" th:value="${Objeto_Obtenido.id}">
+
+            <!-- Botón de eliminación -->
+            <button type="submit" class="btn btn-danger">Eliminar</button> |
+            <!-- Enlace para regresar sin eliminar -->
+            <a th:href="@{/itemproveedor/index}" class="btn btn-secondary">Regresar</a>
+        </form>
+
+    </div>
+</div>
+</body>
+
+</html>

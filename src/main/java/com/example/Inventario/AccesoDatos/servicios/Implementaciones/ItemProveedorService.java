@@ -19,7 +19,7 @@ public class ItemProveedorService implements IItemProveedorService{
     }
 
     @Override
-    public Optional<ItemProveedor> buscarPorId(Long id) {
+    public Optional<ItemProveedor> buscarPorId(Integer id) {
         return itemProveedorRepository.findById(id);
     }
 
@@ -29,7 +29,7 @@ public class ItemProveedorService implements IItemProveedorService{
     }
 
     @Override
-    public void eliminarPorId(Long id) {
+    public void eliminarPorId(Integer id) {
         itemProveedorRepository.deleteById(id);
     }
 }
