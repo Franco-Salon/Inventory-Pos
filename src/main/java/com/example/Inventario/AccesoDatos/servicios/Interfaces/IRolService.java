@@ -12,4 +12,6 @@ public interface IRolService {
     Rol crearOEditar(Rol rol);
 
     void eliminarPorId(Long id);
+
+    List<Rol> listarTodosLosRoles();
 }

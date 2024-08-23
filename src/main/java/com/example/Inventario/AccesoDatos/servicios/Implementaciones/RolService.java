@@ -31,4 +31,8 @@ public class RolService implements IRolService{
     public void eliminarPorId(Long id) {
         rolRepository.deleteById(id);
     }
+    @Override
+    public List<Rol> listarTodosLosRoles() {
+        return rolRepository.findAll();
+    }
 }

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout">
+
+<head>
+    <title>Lista de Usuarios</title>
+</head>
+
+<body>
+<div layout:fragment="content">
+    <h1>Lista de Usuarios</h1>
+    <a th:href="@{/usuarios/create}" class="btn btn-outline-primary mb-3">Nuevo Usuario</a>
+    <table class="table">
+        <thead class="table-dark">
+        <tr>
+
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Telefono</th>
+            <th>Contraseña</th>
+            <th>Dui</th>
+            <th>Rol</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="usuario : ${usuario}">
+            <td th:text="${usuario.nombre}"></td>
+            <td th:text="${usuario.correo}"></td>
+            <td th:text="${usuario.telefono}"></td>
+            <td th:text="${usuario.password}"></td>
+            <td th:text="${usuario.dui}"></td>
+            <td th:text="${usuario.rol.nombre}"></td>
+            <td>
+                <a th:href="@{/usuarios/edit/{id}(id=${usuario.id})}" class="btn btn-secondary">Editar</a> |
+                <a th:href="@{/usuarios/remove/{id}(id=${usuario.id})}" class="btn btn-danger">Eliminar</a> |
+                <a th:href="@{/usuarios/details/{id}(id=${usuario.id})}" class="btn btn-info">Detalle</a>
+
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

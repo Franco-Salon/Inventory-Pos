@@ -1,12 +1,12 @@
 package com.example.Inventario.AccesoDatos.servicios.Interfaces;
 
-import java.util.List;
 import java.util.Optional;
 import com.example.Inventario.EntidadesNegocio.Usuario;
+import org.springframework.data.domain.*;
 
 public interface IUsuarioService {
 
-    List<Usuario> obtenerTodos();
+    Page<Usuario> obtenerTodos(Pageable pageable);
 
     Optional<Usuario> buscarPorId(Long id);
 

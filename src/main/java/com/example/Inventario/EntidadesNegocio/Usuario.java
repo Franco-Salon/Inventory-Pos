@@ -15,18 +15,18 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "El campo es requerido")
+
     private String nombre;
 
-    @NotBlank(message = "El campo es requerido")
+
     private String correo;
 
     private String telefono;
 
-    @NotBlank(message = "El campo es requerido")
+
     private String password;
 
-    @NotBlank(message = "El campo es requirido")
+
     private long dui;
 
     @ManyToOne
