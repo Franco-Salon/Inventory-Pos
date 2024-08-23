@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import com.example.Inventario.AccesoDatos.repositorios.IMunicipioRepository;
 import com.example.Inventario.AccesoDatos.servicios.Interfaces.IMunicipioService;
@@ -15,8 +16,8 @@ public class MunicipioService implements IMunicipioService{
     private IMunicipioRepository municipioRepository;
 
     @Override
-    public List<Municipio> obtenerTodos() {
-        return municipioRepository.findAll();
+    public Page<Municipio> obtenerTodos(Pageable pageable) {
+        return municipioRepository.findAll(pageable);
     }
 
     @Override
