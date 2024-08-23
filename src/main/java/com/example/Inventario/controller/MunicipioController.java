@@ -83,9 +83,9 @@ public class MunicipioController {
 
     @GetMapping("/remove/{id}")
     public String remove(@PathVariable("id") Long id, Model model) {
-        Optional<Municipio> municipio = municipioService.buscarPorId(id);
-        if (municipio.isPresent()) {
-            model.addAttribute("municipio", municipio.get());
+        Optional<Municipio> municipios = municipioService.buscarPorId(id);
+        if (municipios.isPresent()) {
+            model.addAttribute("municipio", municipios.get());
             return "municipio/delete";
         } else {
             return "redirect:/municipios";
