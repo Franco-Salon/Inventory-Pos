@@ -30,12 +30,12 @@
             </div>
             <div class="form-floating mb-3 col-md-6">
                 <input type="text" class="form-control" th:field="*{codActividad}" id="codActividad" required>
-                <label for="codActividad">Cod Actividad</label>
+                <label for="codActividad">Código de Actividad</label>
                 <div class="text-danger" th:if="${#fields.hasErrors('codActividad')}" th:errors="*{codActividad}"></div>
             </div>
             <div class="form-floating mb-3 col-md-6">
                 <input type="text" class="form-control" th:field="*{desActividad}" id="desActividad" required>
-                <label for="desActividad">Des Actividad</label>
+                <label for="desActividad">Descripción de Actividad</label>
                 <div class="text-danger" th:if="${#fields.hasErrors('desActividad')}" th:errors="*{desActividad}"></div>
             </div>
             <div class="form-floating mb-3 col-md-6">
