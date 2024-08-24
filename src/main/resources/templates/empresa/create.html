@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout">
+
+<head>
+    <title>Crear Empresa</title>
+</head>
+<div layout:fragment="content">
+    <h1>Crear nuevo Empresa</h1>
+    <br>
+    <form th:action="@{/empresas/save}" th:object="${empresa}" method="post">
+        <br>
+        <div class="row g-2">
+            <div class="form-floating mb-3 col-md-6">
+                <input type="text" class="form-control" th:field="*{NIT}" id="NIT" required>
+                <label for="NIT">NIT</label>
+                <div class="text-danger" th:if="${#fields.hasErrors('NIT')}" th:errors="*{NIT}"></div>
+            </div>
+            <div class="form-floating mb-3 col-md-6">
+                <input type="text" class="form-control" th:field="*{NRC}" id="NRC" required>
+                <label for="NRC">NRC</label>
+                <div class="text-danger" th:if="${#fields.hasErrors('NRC')}" th:errors="*{NRC}"></div>
+            </div>
+            <div class="form-floating mb-3 col-md-6">
+                <input type="text" class="form-control" th:field="*{nombre}" id="nombre" required>
+                <label for="nombre">Nombre</label>
+                <div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+            </div>
+            <div class="form-floating mb-3 col-md-6">
+                <input type="text" class="form-control" th:field="*{codActividad}" id="codActividad" required>
+                <label for="codActividad">Cod Actividad</label>
+                <div class="text-danger" th:if="${#fields.hasErrors('codActividad')}" th:errors="*{codActividad}"></div>
+            </div>
+            <div class="form-floating mb-3 col-md-6">
+                <input type="text" class="form-control" th:field="*{desActividad}" id="desActividad" required>
+                <label for="desActividad">Des Actividad</label>
+                <div class="text-danger" th:if="${#fields.hasErrors('desActividad')}" th:errors="*{desActividad}"></div>
+            </div>
+            <div class="form-floating mb-3 col-md-6">
+                <input type="text" class="form-control" th:field="*{nombreComercial}" id="nombreComercial" required>
+                <label for="nombreComercial">Nombre comercial</label>
+                <div class="text-danger" th:if="${#fields.hasErrors('nombreComercial')}" th:errors="*{nombreComercial}"></div>
+            </div>
+            <div class="form-floating mb-3 col-md-6">
+                <input type="text" class="form-control" th:field="*{tipoEstablecimiento}" id="tipoEstablecimiento" required>
+                <label for="tipoEstablecimiento">Tipo Establecimiento</label>
+                <div class="text-danger" th:if="${#fields.hasErrors('tipoEstablecimiento')}" th:errors="*{tipoEstablecimiento}"></div>
+            </div>
+            <div class="form-floating mb-3 col-md-6">
+                <input type="text" class="form-control" th:field="*{direccion}" id="direccion" required>
+                <label for="direccion">Dirección</label>
+                <div class="text-danger" th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></div>
+            </div>
+            <div class="form-floating mb-3 col-md-6">
+                <input type="text" class="form-control" th:field="*{correo}" id="correo" required>
+                <label for="correo">Correo</label>
+                <div class="text-danger" th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></div>
+            </div>
+            <div class="form-floating mb-3 col-md-6">
+                <select  class="form-select" aria-label="Default select example" id="municipio"  th:field="*{municipio.id}" required>
+                    <option value="">Seleccione un municipio</option>
+                    <option selected th:each="municipio : ${municipios}"
+                            th:value="${municipio.id}"
+                            th:text="${municipio.nombre}">
+                    </option>
+                </select>
+                <label for="municipio">Municipio</label>
+            </div>
+           
+        </div>
+        <hr>
+        <button type="submit" class="btn btn-primary">Guardar</button> |
+        <a th:href="@{/empresas}" class="btn btn-secondary">Regresar</a>
+    </form>
+</div>
+<body>
+
+</body>
+</html>
