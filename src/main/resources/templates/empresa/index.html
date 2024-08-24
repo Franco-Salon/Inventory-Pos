@@ -17,11 +17,11 @@
   <table class="table">
     <thead class="table-dark">
     <tr>
+      <th>Nombre</th>
       <th>NIT</th>
       <th>NRC</th>
-      <th>Nombre</th>
-      <th>CodActividad</th>
-      <th>DesActividad</th>
+      <th>Código de Actividad</th>
+      <th>Descripción de Actividad</th>
       <th>Nombre Comercial</th>
       <th>Tipo Establecimiento</th>
       <th>Dirección</th>
@@ -33,9 +33,9 @@
     </thead>
     <tbody>
     <tr th:each="empresa : ${empresas}">
+      <td th:text="${empresa.nombre}"></td>
       <td th:text="${empresa.NIT}"></td>
       <td th:text="${empresa.NRC}"></td>
-      <td th:text="${empresa.nombre}"></td>
       <td th:text="${empresa.codActividad}"></td>
       <td th:text="${empresa.desActividad}"></td>
       <td th:text="${empresa.nombreComercial}"></td>
