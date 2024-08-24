@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout">
+
+<head>
+    <title>Eliminar Proveedor</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+<div layout:fragment="content">
+    <h1>Eliminar Proveedor</h1>
+    <h2>¿Está seguro que desea eliminar este registro?</h2>
+
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2 h3">NIT:</dt>
+            <dd class="col-sm-10 h3" th:text="${proveedor.NIT}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2 h3">NRC:</dt>
+            <dd class="col-sm-10 h3" th:text="${proveedor.NRC}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2 h3">Nombre:</dt>
+            <dd class="col-sm-10 h3" th:text="${proveedor.nombre}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2 h3">Código de Actividad:</dt>
+            <dd class="col-sm-10 h3" th:text="${proveedor.codActividad}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2 h3">Descripción de Actividad:</dt>
+            <dd class="col-sm-10 h3" th:text="${proveedor.desActividad}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2 h3">Nombre Comercial:</dt>
+            <dd class="col-sm-10 h3" th:text="${proveedor.nombreComercial}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2 h3">Descripción:</dt>
+            <dd class="col-sm-10 h3" th:text="${proveedor.descripcion}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2 h3">Correo:</dt>
+            <dd class="col-sm-10 h3" th:text="${proveedor.correo}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2 h3">Teléfono:</dt>
+            <dd class="col-sm-10 h3" th:text="${proveedor.telefono}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2 h3">Municipio:</dt>
+            <dd class="col-sm-10 h3" th:text="${proveedor.municipio.nombre}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2 h3">Empresa:</dt>
+            <dd class="col-sm-10 h3" th:text="${proveedor.empresa.nombre}"></dd>
+        </dl>
+        <!-- Formulario para confirmar la eliminación -->
+        <form th:action="@{/proveedores/delete}" method="post">
+            <!-- Campo oculto para enviar el ID del usuario a eliminar -->
+            <input type="hidden" name="id" th:value="${proveedor.id}">
+
+            <!-- Botón de eliminación -->
+            <button type="submit" class="btn btn-danger">Eliminar</button> |
+            <!-- Enlace para regresar sin eliminar -->
+            <a th:href="@{/proveedores}" class="btn btn-secondary">Regresar</a>
+        </form>
+    </div>
+</div>
+</body>
+
+</html>
