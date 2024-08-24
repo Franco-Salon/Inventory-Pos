@@ -11,11 +11,19 @@ import org.springframework.stereotype.Service;
 import com.example.Inventario.AccesoDatos.repositorios.IEmpresaRepository;
 import com.example.Inventario.AccesoDatos.servicios.Interfaces.IEmpresaService;
 import com.example.Inventario.EntidadesNegocio.Empresa;
+import com.example.Inventario.EntidadesNegocio.proveedor;
 @Service
 public class EmpresaService implements IEmpresaService{
     @Autowired
     private IEmpresaRepository empresaRepository;
 
+    
+    @Override
+    public List<Empresa> listarTodos() {
+        return empresaRepository.findAll();
+    }
+
+    
     @Override
     public Page<Empresa> obtenerTodos(Pageable pageable) {
         return empresaRepository.findAll(pageable);
