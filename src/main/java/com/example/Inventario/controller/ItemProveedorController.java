@@ -51,7 +51,7 @@ public class ItemProveedorController
         model.addAttribute("Lista_Item", _ItemService.obtenerTodos());
 
         // Registros De Proveedor:
-        model.addAttribute("Lista_Proveedor", _ProveedorService.obtenerTodos());
+        model.addAttribute("Lista_Proveedor", _ProveedorService.listarTodos());
 
         // Objeto Vasio:
         model.addAttribute("itemProveedor", itemProveedor);
@@ -72,7 +72,7 @@ public class ItemProveedorController
             model.addAttribute("Lista_Item", _ItemService.obtenerTodos());
 
             // Registros De Proveedor:
-            model.addAttribute("Lista_Proveedor", _ProveedorService.obtenerTodos());
+            model.addAttribute("Lista_Proveedor", _ProveedorService.listarTodos());
 
             model.addAttribute("itemProveedor", itemProveedor);
 
@@ -107,7 +107,7 @@ public class ItemProveedorController
         model.addAttribute("Lista_Item", _ItemService.obtenerTodos());
 
         // Registros De Proveedor:
-        model.addAttribute("Lista_Proveedor", _ProveedorService.obtenerTodos());
+        model.addAttribute("Lista_Proveedor", _ProveedorService.listarTodos());
 
 
         return "/ItemProveedor/Edit";
