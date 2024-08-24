@@ -76,5 +76,47 @@ public class EmpresaController {
         return "redirect:/empresas";
     }
 
+    
+    @GetMapping("/details/{id}")
+    public String details(@PathVariable("id") Long id, Model model) {
+        Optional<Empresa> empresa = empresaService.buscarPorId(id);
+        if (empresa.isPresent()) {
+            model.addAttribute("empresa", empresa.get());
+            model.addAttribute("municipios", municipioService.listarTodos());
+
+            return "empresa/details";
+        }
+        return "redirect:/empresas";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable("id") Long id, Model model) {
+        Optional<Empresa> empresa = empresaService.buscarPorId(id);
+        if (empresa.isPresent()) {
+            model.addAttribute("empresa", empresa.get());
+            model.addAttribute("municipios", municipioService.listarTodos());
+            return "empresa/edit";
+        }
+        return "redirect:/empresas";
+    }
+
+    @GetMapping("/remove/{id}")
+    public String remove(@PathVariable("id") Long id, Model model) {
+        Optional<Empresa> empresa = empresaService.buscarPorId(id);
+        if (empresa.isPresent()) {
+            model.addAttribute("empresa", empresa.get());
+            model.addAttribute("municipios", municipioService.listarTodos());
+            return "empresa/delete";
+        }
+        return "redirect:/empresas";
+    }
+
+    @PostMapping("/delete")
+    public String delete(Empresa empresa, RedirectAttributes attributes) {
+        empresaService.eliminarPorId(empresa.getId());
+        attributes.addFlashAttribute("msg", "empresa eliminada correctamente");
+        return "redirect:/empresas";
+    }
+
 
 }
