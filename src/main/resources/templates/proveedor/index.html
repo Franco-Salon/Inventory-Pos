@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout"
+>
+
+<head>
+  <title>Lista proveedores</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div layout:fragment="content">
+  <h1>Lista de proveedores</h1>
+  <a th:href="@{/proveedores/create}" class="btn btn-outline-primary mb-3">Nuevo Proveedor</a>
+  <table class="table">
+    <thead class="table-dark">
+    <tr>
+      <th>NIT</th>
+      <th>NRC</th>
+      <th>Nombre</th>
+      <th>CodActividad</th>
+      <th>DesActividad</th>
+      <th>Nombre Comercial</th>
+      <th>Descripcion</th>
+      <th>Correo</th>
+      <th>Telefono</th>
+      <th>Municipio</th>
+      <th>Empresa</th>
+      <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="proveedor : ${proveedores}">
+      <td th:text="${proveedor.NIT}"></td>
+      <td th:text="${proveedor.NRC}"></td>
+      <td th:text="${proveedor.nombre}"></td>
+      <td th:text="${proveedor.codActividad}"></td>
+      <td th:text="${proveedor.desActividad}"></td>
+      <td th:text="${proveedor.nombreComercial}"></td>
+      <td th:text="${proveedor.descripcion}"></td>
+      <td th:text="${proveedor.correo}"></td>
+      <td th:text="${proveedor.telefono}"></td>
+      <td th:text="${proveedor.municipio.nombre}"></td>
+      <td th:text="${proveedor.empresa.nombre}"></td>
+
+      <td>
+        <a th:href="@{/proveedores/edit/{id}(id=${proveedor.id})}" class="btn btn-secondary">Editar</a> |
+        <a th:href="@{/proveedores/remove/{id}(id=${proveedor.id})}" class="btn btn-danger">Eliminar</a> |
+        <a th:href="@{/proveedores/details/{id}(id=${proveedor.id})}" class="btn btn-info">Detalle</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item" th:classappend="${proveedores.pageable.pageNumber == 0} ? 'disabled'">
+        <a class="page-link" th:href="@{/proveedores(page=${proveedores.pageable.pageNumber - 1}, size=${proveedores.pageable.pageSize})}">Anterior</a>
+      </li>
+      
+      <li class="page-item" th:each="pageNum : ${pageNumbers}"
+        th:if="${pageNum >= proveedores.pageable.pageNumber - 2} and ${pageNum <= proveedores.pageable.pageNumber + 2}"
+        th:classappend="${pageNum == proveedores.pageable.pageNumber + 1} ? 'active'">
+        <a class="page-link" th:href="@{/proveedores(page=${pageNum}, size=${proveedores.pageable.pageSize})}"
+           th:text="${pageNum}">1</a>
+      </li>
+      
+      <li class="page-item" th:classappend="${proveedores.pageable.pageNumber + 1 == proveedores.totalPages} ? 'disabled'">
+        <a class="page-link" th:href="@{/proveedores(page=${proveedores.pageable.pageNumber + 1}, size=${proveedores.pageable.pageSize})}">Siguiente</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+</body>
+
+</html>
