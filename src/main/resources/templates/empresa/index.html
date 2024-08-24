@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout"
+>
+
+<head>
+  <title>Lista empresas</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div layout:fragment="content">
+  <h1>Lista de empresas</h1>
+  <a th:href="@{/empresas/create}" class="btn btn-outline-primary mb-3">Nueva empresas</a>
+  <table class="table">
+    <thead class="table-dark">
+    <tr>
+      <th>NIT</th>
+      <th>NRC</th>
+      <th>Nombre</th>
+      <th>CodActividad</th>
+      <th>DesActividad</th>
+      <th>Nombre Comercial</th>
+      <th>Tipo Establecimiento</th>
+      <th>Dirección</th>
+      <th>Correo</th>
+      <th>Municipio</th>
+      <th>Acciones</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="empresa : ${empresas}">
+      <td th:text="${empresa.NIT}"></td>
+      <td th:text="${empresa.NRC}"></td>
+      <td th:text="${empresa.nombre}"></td>
+      <td th:text="${empresa.codActividad}"></td>
+      <td th:text="${empresa.desActividad}"></td>
+      <td th:text="${empresa.nombreComercial}"></td>
+      <td th:text="${empresa.tipoEstablecimiento}"></td>
+      <td th:text="${empresa.direccion}"></td>
+      <td th:text="${empresa.correo}"></td>
+      <td th:text="${empresa.municipio.nombre}"></td>
+
+      <td>
+        <a th:href="@{/empresas/edit/{id}(id=${empresa.id})}" class="btn btn-secondary">Editar</a> |
+        <a th:href="@{/empresas/remove/{id}(id=${empresa.id})}" class="btn btn-danger">Eliminar</a> |
+        <a th:href="@{/empresas/details/{id}(id=${empresa.id})}" class="btn btn-info">Detalle</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item" th:classappend="${empresas.pageable.pageNumber == 0} ? 'disabled'">
+        <a class="page-link" th:href="@{/empresas(page=${empresas.pageable.pageNumber - 1}, size=${empresas.pageable.pageSize})}">Anterior</a>
+      </li>
+      
+      <li class="page-item" th:each="pageNum : ${pageNumbers}"
+        th:if="${pageNum >= empresas.pageable.pageNumber - 2} and ${pageNum <= empresas.pageable.pageNumber + 2}"
+        th:classappend="${pageNum == empresas.pageable.pageNumber + 1} ? 'active'">
+        <a class="page-link" th:href="@{/empresas(page=${pageNum}, size=${empresas.pageable.pageSize})}"
+           th:text="${pageNum}">1</a>
+      </li>
+      
+      <li class="page-item" th:classappend="${empresas.pageable.pageNumber + 1 == empresas.totalPages} ? 'disabled'">
+        <a class="page-link" th:href="@{/empresas(page=${empresas.pageable.pageNumber + 1}, size=${empresas.pageable.pageSize})}">Siguiente</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+</body>
+
+</html>
