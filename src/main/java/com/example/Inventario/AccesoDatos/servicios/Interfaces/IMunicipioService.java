@@ -6,7 +6,10 @@ import com.example.Inventario.EntidadesNegocio.Municipio;
 import org.springframework.data.domain.*;
 
 public interface IMunicipioService {
-     Page<Municipio> obtenerTodos(Pageable pageable);
+
+    List<Municipio> listarTodos();
+
+    Page<Municipio> obtenerTodos(Pageable pageable);
 
     Optional<Municipio> buscarPorId(Long id);
 

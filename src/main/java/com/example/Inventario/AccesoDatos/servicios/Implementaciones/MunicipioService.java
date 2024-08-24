@@ -16,6 +16,10 @@ public class MunicipioService implements IMunicipioService{
     private IMunicipioRepository municipioRepository;
 
     @Override
+    public List<Municipio> listarTodos() {
+        return municipioRepository.findAll();
+    }
+    @Override
     public Page<Municipio> obtenerTodos(Pageable pageable) {
         return municipioRepository.findAll(pageable);
     }
