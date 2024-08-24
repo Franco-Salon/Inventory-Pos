@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout">
+<head>
+    <title>Editar Proveedor</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <h1>Editar Proveedor</h1>
+    <form th:action="@{/proveedores/save}" th:object="${proveedor}" method="post">
+        <input type="hidden" th:field="*{id}">
+        <br>
+        <div class="row g-2">
+            <div class="form-floating mb-3 col-md-6">
+                <input type="text" class="form-control" th:field="*{NIT}" id="NIT" required>
+                <label for="NIT">NIT</label>
+                <div class="text-danger" th:if="${#fields.hasErrors('NIT')}" th:errors="*{NIT}"></div>
+            </div>
+            <div class="form-floating mb-3 col-md-6">
+                <input type="text" class="form-control" th:field="*{NRC}" id="NRC" required>
+                <label for="NRC">NRC</label>
+                <div class="text-danger" th:if="${#fields.hasErrors('NRC')}" th:errors="*{NRC}"></div>
+            </div>
+            <div class="form-floating mb-3 col-md-6">
+                <input type="text" class="form-control" th:field="*{nombre}" id="nombre" required>
+                <label for="nombre">Nombre</label>
+                <div class="text-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+            </div>
+            <div class="form-floating mb-3 col-md-6">
+                <input type="text" class="form-control" th:field="*{codActividad}" id="codActividad" required>
+                <label for="codActividad">Código de Actividad</label>
+                <div class="text-danger" th:if="${#fields.hasErrors('codActividad')}" th:errors="*{codActividad}"></div>
+            </div>
+            <div class="form-floating mb-3 col-md-6">
+                <input type="text" class="form-control" th:field="*{desActividad}" id="desActividad" required>
+                <label for="desActividad">Descripción de Actividad</label>
+                <div class="text-danger" th:if="${#fields.hasErrors('desActividad')}" th:errors="*{desActividad}"></div>
+            </div>
+            <div class="form-floating mb-3 col-md-6">
+                <input type="text" class="form-control" th:field="*{nombreComercial}" id="nombreComercial" required>
+                <label for="nombreComercial">Nombre comercial</label>
+                <div class="text-danger" th:if="${#fields.hasErrors('nombreComercial')}" th:errors="*{nombreComercial}"></div>
+            </div>
+            <div class="form-floating mb-3 col-md-6">
+                <textarea class="form-control" th:field="*{descripcion}" id="descripcion" cols="12" rows="3" required></textarea>
+                <label for="descripcion">Descripcion</label>
+                <div class="text-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></div>
+            </div>
+            <div class="form-floating mb-3 col-md-6">
+                <input type="text" class="form-control" th:field="*{correo}" id="correo" required>
+                <label for="correo">Correo</label>
+                <div class="text-danger" th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></div>
+            </div>
+            <div class="form-floating mb-3 col-md-6">
+                <input type="number" class="form-control" th:field="*{telefono}" id="telefono" required>
+                <label for="telefono">Telefono</label>
+                <div class="text-danger" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
+            </div>
+            <div class="form-floating mb-3 col-md-6">
+                <select  class="form-select" aria-label="Default select example" id="municipio"  th:field="*{municipio.id}" required>
+                    <option value="">Seleccione un municipio</option>
+                    <option selected th:each="municipio : ${municipios}"
+                            th:value="${municipio.id}"
+                            th:text="${municipio.nombre}">
+                    </option>
+                </select>
+                <label for="municipio">Municipio</label>
+            </div>
+            <div class="form-floating mb-3 col-md-6">
+                <select  class="form-select" aria-label="Default select example" id="empresa"  th:field="*{empresa.id}" required>
+                    <option value="">Seleccione una empresa</option>
+                    <option selected th:each="empresa : ${empresas}"
+                            th:value="${empresa.id}"
+                            th:text="${empresa.nombre}">
+                    </option>
+                </select>
+                <label for="empresa">Empresa</label>
+            </div>     
+        </div>
+        <hr>
+        <button type="submit" class="btn btn-primary">Guardar</button> |
+        <a th:href="@{/proveedores}" class="btn btn-outline-secondary">Regresar</a>
+    </form>
+</div>
+</body>
+</html>
