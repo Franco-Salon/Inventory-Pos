@@ -3,7 +3,6 @@ package com.example.Inventario.AccesoDatos.servicios.Implementaciones;
 import com.example.Inventario.AccesoDatos.servicios.Interfaces.IClienteService;
 import com.example.Inventario.EntidadesNegocio.Cliente;
 import com.example.Inventario.AccesoDatos.repositorios.IClienteRepository;
-import com.example.Inventario.EntidadesNegocio.CompraDetalle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

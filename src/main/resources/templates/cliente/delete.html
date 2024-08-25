@@ -1,0 +1,56 @@
+<!-- delete.html -->
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout">
+
+<head>
+    <title>Eliminar Cliente</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+<div layout:fragment="content">
+    <h1>Eliminar Cliente</h1>
+    <h2>¿Está seguro que desea eliminar este registro?</h2>
+
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2 h3">Nombre:</dt>
+            <dd class="col-sm-10 h3" th:text="${cliente.nombre}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2 h3">Correo:</dt>
+            <dd class="col-sm-10 h3" th:text="${cliente.correo}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2 h3">Teléfono:</dt>
+            <dd class="col-sm-10 h3" th:text="${cliente.telefono}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2 h3">Tipo de Documento:</dt>
+            <dd class="col-sm-10 h3" th:text="${cliente.tipoDocumento}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2 h3">Número de Documento:</dt>
+            <dd class="col-sm-10 h3" th:text="${cliente.numeroDocumento}"></dd>
+        </dl>
+
+        <!-- Formulario para confirmar la eliminación -->
+        <form th:action="@{/clientes/delete}" method="post">
+            <!-- Campo oculto para enviar el ID del cliente a eliminar -->
+            <input type="hidden" name="id" th:value="${cliente.id}">
+
+            <!-- Botón de eliminación -->
+            <button type="submit" class="btn btn-danger">Eliminar</button> |
+            <!-- Enlace para regresar sin eliminar -->
+            <a th:href="@{/clientes}" class="btn btn-secondary">Regresar</a>
+        </form>
+    </div>
+</div>
+</body>
+
+</html>

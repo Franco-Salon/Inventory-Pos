@@ -1,11 +1,14 @@
 package com.example.Inventario.EntidadesNegocio;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.NotBlank;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 
 @Entity
 @Table(name = "cliente")
@@ -18,7 +21,9 @@ public class Cliente {
     @NotBlank(message = "El campo es requerido")
     private String tipoDocumento;
 
-    @NotBlank(message = "El campo es requerido")
+    
+    @NotNull(message = "El número de documento no puede ser nulo")
+    @Min(value = 1, message = "El número de documento debe ser mayor que cero")
     private int numeroDocumento;
 
     private String nrc;
