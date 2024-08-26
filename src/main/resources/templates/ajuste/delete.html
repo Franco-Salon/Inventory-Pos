@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="/layouts/_mainLayout">
+
+<head>
+    <title>Eliminar Ajuste</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div layout:fragment="content">
+        <h1>Eliminar Ajuste</h1>
+        <h2>¿Está seguro que desea eliminar este registro?</h2>
+
+        <div>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2 h3">Fecha:</dt>
+                <dd class="col-sm-10 h3" th:text="${ajuste.fecha}"></dd>
+            </dl>
+
+            <dl class="row">
+                <dt class="col-sm-2 h3">Cantidad:</dt>
+                <dd class="col-sm-10 h3" th:text="${ajuste.cantidad}"></dd>
+            </dl>
+
+            <dl class="row">
+                <dt class="col-sm-2 h3">Item:</dt>
+                <dd class="col-sm-10 h3" th:text="${ajuste.item.nombre}"></dd>
+            </dl>
+
+            <dl class="row">
+                <dt class="col-sm-2 h3">Usuario:</dt>
+                <dd class="col-sm-10 h3" th:text="${ajuste.usuario.nombre}"></dd>
+            </dl>
+
+            <dl class="row">
+                <dt class="col-sm-2 h3">Unidad de Medida:</dt>
+                <dd class="col-sm-10 h3" th:text="${ajuste.unidadwedida.nombre}"></dd>
+            </dl>
+
+            <form th:action="@{/ajustes/delete}" method="post">
+                <input type="hidden" name="id" th:value="${ajuste.id}">
+                <button type="submit" class="btn btn-danger">Eliminar</button> |
+                <a th:href="@{/ajustes}" class="btn btn-secondary">Regresar</a>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

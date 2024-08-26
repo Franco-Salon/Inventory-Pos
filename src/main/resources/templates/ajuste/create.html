@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="/layouts/_mainLayout">
+
+<head>
+    <title>Crear Ajuste</title>
+</head>
+
+<div layout:fragment="content">
+    <h1>Crear nuevo Ajuste</h1>
+    <br>
+    <form th:action="@{/ajustes/save}" th:object="${ajuste}" method="post">
+        <br>
+        <div class="row g-2">
+            <div class="form-floating mb-3 col-md-6">
+                <input type="date" class="form-control" th:field="*{fecha}" id="fecha" required>
+                <label for="fecha">Fecha</label>
+                <div class="text-danger" th:if="${#fields.hasErrors('fecha')}" th:errors="*{fecha}"></div>
+            </div>
+
+            <div class="form-floating mb-3 col-md-6">
+                <input type="number" class="form-control" th:field="*{cantidad}" id="cantidad" required>
+                <label for="cantidad">Cantidad</label>
+                <div class="text-danger" th:if="${#fields.hasErrors('cantidad')}" th:errors="*{cantidad}"></div>
+            </div>
+
+            <div class="form-floating mb-3 col-md-6">
+                <select class="form-select" id="item" th:field="*{item.id}" required>
+                    <option value="">Seleccione un item</option>
+                    <option th:each="item : ${items}" th:value="${item.id}" th:text="${item.nombre}"></option>
+                </select>
+                <label for="item">Item</label>
+            </div>
+
+            <div class="form-floating mb-3 col-md-6">
+                <select class="form-select" id="usuario" th:field="*{usuario.id}" required>
+                    <option value="">Seleccione un usuario</option>
+                    <option th:each="usuario : ${usuarios}" th:value="${usuario.id}" th:text="${usuario.nombre}">
+                    </option>
+                </select>
+                <label for="usuario">Usuario</label>
+            </div>
+
+            <div class="form-floating mb-3 col-md-6">
+                <select class="form-select" id="unidad" th:field="*{unidadwedida.id}" required>
+                    <option value="">Seleccione una unidad</option>
+                    <option th:each="unidad : ${unidades}" th:value="${unidad.id}" th:text="${unidad.nombre}"></option>
+                </select>
+                <label for="unidad">Unidad de Medida</label>
+            </div>
+
+            <div class="form-floating mb-3 col-md-6">
+                <input type="number" class="form-control" th:field="*{tipoMovimiento}" id="tipoMovimiento" required>
+                <label for="tipoMovimiento">Tipo de Movimiento</label>
+                <div class="text-danger" th:if="${#fields.hasErrors('tipoMovimiento')}" th:errors="*{tipoMovimiento}">
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <button type="submit" class="btn btn-primary">Guardar</button> |
+        <a th:href="@{/ajustes}" class="btn btn-secondary">Regresar</a>
+    </form>
+</div>
+
+</html>

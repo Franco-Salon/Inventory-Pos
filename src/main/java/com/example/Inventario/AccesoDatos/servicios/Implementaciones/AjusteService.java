@@ -4,6 +4,8 @@ import com.example.Inventario.AccesoDatos.servicios.Interfaces.IAjusteService;
 import com.example.Inventario.EntidadesNegocio.Ajuste;
 import com.example.Inventario.AccesoDatos.repositorios.IAjusteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +16,11 @@ public class AjusteService implements IAjusteService {
 
     @Autowired
     private IAjusteRepository ajusteRepository;
+
+    @Override
+    public Page<Ajuste> buscarTodosPaginados(Pageable pageable) {
+        return ajusteRepository.findAll(pageable);
+    }
 
     @Override
     public List<Ajuste> obtenerTodos() {

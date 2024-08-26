@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="/layouts/_mainLayout">
+
+<head>
+    <title>Lista de Ajustes</title>
+</head>
+
+<body>
+    <div layout:fragment="content">
+        <h1>Lista de Ajustes</h1>
+        <a th:href="@{/ajustes/create}" class="btn btn-outline-primary mb-3">Nuevo Ajuste</a>
+
+        <table class="table">
+            <thead class="table-dark">
+                <tr>
+                    <th>Fecha</th>
+                    <th>Cantidad</th>
+                    <th>Item</th>
+                    <th>Usuario</th>
+                    <th>Unidad de Medida</th>
+                    <th>Tipo de Movimiento</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="ajuste : ${ajustes}">
+                    <td th:text="${ajuste.fecha}"></td>
+                    <td th:text="${ajuste.cantidad}"></td>
+                    <td th:text="${ajuste.item.nombre}"></td>
+                    <td th:text="${ajuste.usuario.nombre}"></td>
+                    <td th:text="${ajuste.unidadwedida.nombre}"></td>
+                    <td th:text="${ajuste.tipoMovimiento}"></td>
+                    <td>
+                        <a th:href="@{/ajustes/edit/{id}(id=${ajuste.id})}" class="btn btn-secondary">Editar</a> |
+                        <a th:href="@{/ajustes/remove/{id}(id=${ajuste.id})}" class="btn btn-danger">Eliminar</a> |
+                        <a th:href="@{/ajustes/details/{id}(id=${ajuste.id})}" class="btn btn-info">Detalle</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

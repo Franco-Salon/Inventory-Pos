@@ -2,13 +2,17 @@ package com.example.Inventario.controller;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,67 +31,80 @@ public class AjusteController {
     @Autowired
     private IAjusteService ajusteService;
 
-    @GetMapping("/index")
-    public String index(Model model) {
-        List<Ajuste> ajustes = ajusteService.obtenerTodos();
+    @GetMapping
+    public String index(Model model, @RequestParam("page") Optional<Long> page, @RequestParam("size") Optional<Integer> size) {
+        long currentPage = page.orElse(1L) - 1L; // si no está seteado se asigna 0
+        int pageSize = size.orElse(10); // tamaño de la página, se asigna 10
+        Pageable pageable = PageRequest.of((int) currentPage, pageSize);
+
+        Page<Ajuste> ajustes = ajusteService.buscarTodosPaginados(pageable);
         model.addAttribute("ajustes", ajustes);
-        return "ajustes/index";
+
+        int totalPages = ajustes.getTotalPages();
+        if (totalPages > 0) {
+            List<Long> pageNumbers = IntStream.rangeClosed(1, totalPages)
+                    .mapToLong(i -> i) // Convertir a Long
+                    .boxed()
+                    .collect(Collectors.toList());
+            model.addAttribute("pageNumbers", pageNumbers);
+        }
+
+        return "ajuste/index";
     }
 
     @GetMapping("/create")
     public String create(Model model) {
         model.addAttribute("ajuste", new Ajuste());
-        return "ajustes/create";
+        return "ajuste/create";
     }
 
     @PostMapping("/save")
-    public String save(@Valid @ModelAttribute("ajuste") Ajuste ajuste, BindingResult result, RedirectAttributes attributes) {
+    public String save(@Valid Ajuste ajuste, BindingResult result, Model model, RedirectAttributes attributes) {
         if (result.hasErrors()) {
-            return "ajustes/create";
+            model.addAttribute("ajuste", ajuste);
+            attributes.addFlashAttribute("error", "No se pudo guardar debido a un error.");
+            return "ajuste/create";
         }
 
         ajusteService.crearOEditar(ajuste);
         attributes.addFlashAttribute("msg", "Ajuste guardado correctamente");
-        return "redirect:/ajustes/index";
-    }
-
-    @GetMapping("/edit/{id}")
-    public String edit(@PathVariable("id") Long id, Model model) {
-        Optional<Ajuste> ajusteOptional = ajusteService.buscarPorId(id);
-        if (ajusteOptional.isPresent()) {
-            model.addAttribute("ajuste", ajusteOptional.get());
-            return "ajustes/edit";
-        } else {
-            return "redirect:/ajustes/index";
-        }
+        return "redirect:/ajustes";
     }
 
     @GetMapping("/details/{id}")
     public String details(@PathVariable("id") Long id, Model model) {
-        Optional<Ajuste> ajusteOptional = ajusteService.buscarPorId(id);
-        if (ajusteOptional.isPresent()) {
-            model.addAttribute("ajuste", ajusteOptional.get());
-            return "ajustes/details";
-        } else {
-            return "redirect:/ajustes/index";
+        Optional<Ajuste> ajuste = ajusteService.buscarPorId(id);
+        if (ajuste.isPresent()) {
+            model.addAttribute("ajuste", ajuste.get());
+            return "ajuste/details";
         }
+        return "redirect:/ajustes";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable("id") Long id, Model model) {
+        Optional<Ajuste> ajuste = ajusteService.buscarPorId(id);
+        if (ajuste.isPresent()) {
+            model.addAttribute("ajuste", ajuste.get());
+            return "ajuste/edit";
+        }
+        return "redirect:/ajustes";
     }
 
     @GetMapping("/remove/{id}")
     public String remove(@PathVariable("id") Long id, Model model) {
-        Optional<Ajuste> ajusteOptional = ajusteService.buscarPorId(id);
-        if (ajusteOptional.isPresent()) {
-            model.addAttribute("ajuste", ajusteOptional.get());
-            return "ajustes/delete";
-        } else {
-            return "redirect:/ajustes/index";
+        Optional<Ajuste> ajuste = ajusteService.buscarPorId(id);
+        if (ajuste.isPresent()) {
+            model.addAttribute("ajuste", ajuste.get());
+            return "ajuste/delete";
         }
+        return "redirect:/ajustes";
     }
 
     @PostMapping("/delete")
-    public String delete(@RequestParam("id") Long id, RedirectAttributes attributes) {
-        ajusteService.eliminarPorId(id);
+    public String delete(Ajuste ajuste, RedirectAttributes attributes) {
+        ajusteService.eliminarPorId(ajuste.getId());
         attributes.addFlashAttribute("msg", "Ajuste eliminado correctamente");
-        return "redirect:/ajustes/index";
+        return "redirect:/ajustes";
     }
 }
