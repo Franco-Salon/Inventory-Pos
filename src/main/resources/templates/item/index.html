@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout"
+>
+
+<head>
+    <title>Lista items</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div layout:fragment="content">
+    <h1>Lista de items</h1>
+    <a th:href="@{/item/create}" class="btn btn-outline-primary mb-3">Nuevo Item</a>
+    <table class="table">
+        <thead class="table-dark">
+        <tr>
+            <th>Nombre</th>
+            <th>Correlativo</th>
+            <th>Descripcion</th>
+            <th>Existencia</th>
+            <th>Precio</th>
+            <th>Empresa</th>
+            <th>Codigo de Barra</th>
+            <th>Fecha</th>
+            <th>Categoria</th>
+            <th>Tipo de Item</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${items}">
+            <td th:text="${item.nombre}"></td>
+            <td th:text="${item.correlativo}"></td>
+            <td th:text="${item.descripcion}"></td>
+            <td th:text="${item.existencia}"></td>
+            <td th:text="${item.precio}"></td>
+            <td th:text="${item.empresa.nombre}"></td>
+            <td th:text="${item.codigoBarra}"></td>
+            <td th:text="${item.fecha}"></td>
+            <td th:text="${item.categoriaitem.nombre}"></td>
+            <td th:text="${item.tipoitem.nombre}"></td>
+            <td>
+                <a th:href="@{/item/edit/{id}(id=${item.id})}" class="btn btn-secondary">Editar</a> |
+                <a th:href="@{/item/remove/{id}(id=${item.id})}" class="btn btn-danger">Eliminar</a> |
+                <a th:href="@{/item/details/{id}(id=${item.id})}" class="btn btn-info">Detalle</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item" th:classappend="${items.pageable.pageNumber == 0} ? 'disabled'">
+                <a class="page-link" th:href="@{/item(page=${items.pageable.pageNumber - 1}, size=${items.pageable.pageSize})}">Anterior</a>
+            </li>
+
+            <li class="page-item" th:each="pageNum : ${pageNumbers}"
+                th:if="${pageNum >= items.pageable.pageNumber - 2} and ${pageNum <= items.pageable.pageNumber + 2}"
+                th:classappend="${pageNum == items.pageable.pageNumber + 1} ? 'active'">
+                <a class="page-link" th:href="@{/item(page=${pageNum}, size=${items.pageable.pageSize})}"
+                   th:text="${pageNum}">1</a>
+            </li>
+
+            <li class="page-item" th:classappend="${items.pageable.pageNumber + 1 == items.totalPages} ? 'disabled'">
+                <a class="page-link" th:href="@{/item(page=${items.pageable.pageNumber + 1}, size=${items.pageable.pageSize})}">Siguiente</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+</body>
+
+</html>

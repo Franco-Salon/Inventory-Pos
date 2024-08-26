@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout">
+
+<head>
+    <title>Eliminar Item</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<div layout:fragment="content">
+    <h1>Eliminar Item</h1>
+    <h2>¿Está seguro que desea eliminar este registro?</h2>
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2 h3">Nombre:</dt>
+            <dd class="col-sm-10 h3" th:text="${item.nombre}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2 h3">Correlativo:</dt>
+            <dd class="col-sm-10 h3" th:text="${item.correlativo}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2 h3">Descripcion:</dt>
+            <dd class="col-sm-10 h3" th:text="${item.descripcion}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2 h3">Existencia:</dt>
+            <dd class="col-sm-10 h3" th:text="${item.existencia}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2 h3">Precio:</dt>
+            <dd class="col-sm-10 h3" th:text="${item.precio}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2 h3">Empresa:</dt>
+            <dd class="col-sm-10 h3" th:text="${item.empresa.nombre}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2 h3">Codigo de barra:</dt>
+            <dd class="col-sm-10 h3" th:text="${item.codigoBarra}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2 h3">Fecha:</dt>
+            <dd class="col-sm-10 h3" th:text="${item.fecha}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2 h3">Categoria:</dt>
+            <dd class="col-sm-10 h3" th:text="${item.categoriaitem.nombre}"></dd>
+        </dl>
+        <dl class="row">
+            <dt class="col-sm-2 h3">Tipo item:</dt>
+            <dd class="col-sm-10 h3" th:text="${item.tipoitem.nombre}"></dd>
+        </dl>
+        <form th:action="@{/tipoitems/delete}" method="post">
+            <input type="hidden" name="id" th:value="${item.id}">
+            <button type="submit" class="btn btn-danger">Eliminar</button> |
+            <a th:href="@{/item}" class="btn btn-secondary">Regresar</a>
+        </form>
+    </div>
+</div>
+
+</html>
