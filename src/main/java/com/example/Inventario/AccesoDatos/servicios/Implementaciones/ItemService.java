@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.Inventario.AccesoDatos.repositorios.IItemRepository;
@@ -14,6 +16,11 @@ import com.example.Inventario.EntidadesNegocio.Item;
 public class ItemService implements IItemService{
     @Autowired
     private IItemRepository itemRepository;
+
+    @Override
+    public Page<Item> buscarTodosPaginados(Pageable pageable) {
+        return itemRepository.findAll(pageable);
+    }
 
     @Override
     public List<Item> obtenerTodos() {
