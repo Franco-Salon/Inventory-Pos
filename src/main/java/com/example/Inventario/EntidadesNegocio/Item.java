@@ -29,11 +29,11 @@ public class Item {
 
     private String descripcion;
 
-    @NotBlank(message = "El campo es requerido")
-    private int existencia;
+    @NotNull(message = "El campo es requerido")
+    private Integer existencia;
 
-    @NotBlank(message = "El campo es requerido")
-    private BigDecimal precio;
+    @NotNull(message = "El campo es requerido")
+    private Double precio;
 
     @ManyToOne
     @JoinColumn(name = "id_Empresa")
@@ -104,19 +104,19 @@ public class Item {
         this.descripcion = descripcion;
     }
 
-    public int getExistencia() {
+    public Integer getExistencia() {
         return existencia;
     }
 
-    public void setExistencia(int existencia) {
+    public void setExistencia(Integer existencia) {
         this.existencia = existencia;
     }
 
-    public BigDecimal getPrecio() {
+    public Double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(BigDecimal precio) {
+    public void setPrecio(Double precio) {
         this.precio = precio;
     }
 
