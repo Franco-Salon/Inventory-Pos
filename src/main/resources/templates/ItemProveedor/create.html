@@ -11,7 +11,7 @@
 <div layout:fragment="content">
     <h1>Crear nuevo ItemProveedor</h1>
     <br>
-    <form th:action="@{/itemproveedor/save}" th:object="${itemProveedor}" method="post">
+    <form th:action="@{/itemproveedores/save}" th:object="${itemProveedor}" method="post">
         <br>
         <div class="row g-2">
 
@@ -19,7 +19,7 @@
             <div class="form-floating mb-3 col-md-6">
                 <select  class="form-select" aria-label="Default select example" id="item"  th:field="*{item.id}" required>
                     <option value="">Seleccione un item</option>
-                    <option selected th:each="item : ${Lista_Item}"
+                    <option selected th:each="item : ${item}"
                             th:value="${item.id}"
                             th:text="${item.nombre}">
                     </option>
@@ -31,7 +31,7 @@
             <div class="form-floating mb-3 col-md-6">
                 <select  class="form-select" aria-label="Default select example" id="proveedor"  th:field="*{proveedor.id}" required>
                     <option value="">Seleccione un Proveedor</option>
-                    <option selected th:each="proveedor : ${Lista_Proveedor}"
+                    <option selected th:each="proveedor : ${proveedor}"
                             th:value="${proveedor.id}"
                             th:text="${proveedor.nombre}">
                     </option>
@@ -43,7 +43,7 @@
 
         <hr>
         <button type="submit" class="btn btn-primary">Guardar</button> |
-        <a th:href="@{/itemproveedor/index}" class="btn btn-secondary">Regresar</a>
+        <a th:href="@{/itemproveedores}" class="btn btn-secondary">Regresar</a>
     </form>
 </div>
 </html>
