@@ -1,6 +1,7 @@
 package com.example.Inventario.EntidadesNegocio;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 
 import java.math.BigDecimal;
@@ -20,23 +21,17 @@ public class Venta {
     @NotBlank(message = "el campo es requerida")
     private String codigo;
 
-
     private BigDecimal subTotal;
-
 
     private BigDecimal totalPago;
 
-
     private BigDecimal totalIva;
-
-
 
     @NotBlank(message = "el campo es requerida")
     private String formaPago;
 
     @NotBlank(message = "el campo es requerida")
     private LocalDate fecha;
-
 
     @ManyToOne
     @JoinColumn(name = "id_Cliente", referencedColumnName = "id")
@@ -53,8 +48,9 @@ public class Venta {
     @ManyToOne
     @JoinColumn(name = "id_Empresa", referencedColumnName = "id")
     private Empresa empresa;
-
-
+    @Valid
+    @OneToMany(mappedBy = "detalleVenta", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<DetalleVenta> detalleVentas;
 
     public Long getId() {
         return id;
