@@ -49,7 +49,7 @@ public class Venta {
     @JoinColumn(name = "id_Empresa", referencedColumnName = "id")
     private Empresa empresa;
     @Valid
-    @OneToMany(mappedBy = "detalleVenta", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<DetalleVenta> detalleVentas;
 
     public Long getId() {
@@ -138,5 +138,13 @@ public class Venta {
 
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
+    }
+
+    public @Valid List<DetalleVenta> getDetalleVentas() {
+        return detalleVentas;
+    }
+
+    public void setDetalleVentas(@Valid List<DetalleVenta> detalleVentas) {
+        this.detalleVentas = detalleVentas;
     }
 }

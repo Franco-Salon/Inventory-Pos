@@ -59,7 +59,7 @@ public class AjusteController {
     }
 
     @PostMapping("/save")
-    public String save(@Valid Ajuste ajuste, BindingResult result, Model model, RedirectAttributes attributes) {
+    public String save(Ajuste ajuste, BindingResult result, Model model, RedirectAttributes attributes) {
         if (result.hasErrors()) {
             model.addAttribute("ajuste", ajuste);
             attributes.addFlashAttribute("error", "No se pudo guardar debido a un error.");

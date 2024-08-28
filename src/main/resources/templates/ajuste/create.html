@@ -25,7 +25,7 @@
             </div>
 
             <div class="form-floating mb-3 col-md-6">
-                <select class="form-select" id="item" th:field="*{item.id}" required>
+                <select class="form-select" id="item" th:field="*{item.id}" >
                     <option value="">Seleccione un item</option>
                     <option th:each="item : ${items}" th:value="${item.id}" th:text="${item.nombre}"></option>
                 </select>
@@ -33,7 +33,7 @@
             </div>
 
             <div class="form-floating mb-3 col-md-6">
-                <select class="form-select" id="usuario" th:field="*{usuario.id}" required>
+                <select class="form-select" id="usuario" th:field="*{usuario.id}" >
                     <option value="">Seleccione un usuario</option>
                     <option th:each="usuario : ${usuarios}" th:value="${usuario.id}" th:text="${usuario.nombre}">
                     </option>
@@ -42,7 +42,7 @@
             </div>
 
             <div class="form-floating mb-3 col-md-6">
-                <select class="form-select" id="unidad" th:field="*{unidadwedida.id}" required>
+                <select class="form-select" id="unidad" th:field="*{unidadwedida.id}" >
                     <option value="">Seleccione una unidad</option>
                     <option th:each="unidad : ${unidades}" th:value="${unidad.id}" th:text="${unidad.nombre}"></option>
                 </select>
