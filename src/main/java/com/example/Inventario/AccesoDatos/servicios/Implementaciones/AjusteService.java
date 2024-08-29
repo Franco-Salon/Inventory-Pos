@@ -42,4 +42,10 @@ public class AjusteService implements IAjusteService {
         ajusteRepository.deleteById(id);
     }
 
+    
+    @Override
+    public List<Ajuste> listarTodosLosAjustes() {
+        return ajusteRepository.findAll();
+    }
+
 }

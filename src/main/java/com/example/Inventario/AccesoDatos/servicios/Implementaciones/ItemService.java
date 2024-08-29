@@ -41,4 +41,9 @@ public class ItemService implements IItemService{
     public void eliminarPorId(Long id) {
         itemRepository.deleteById(id);
     }
+
+    @Override
+    public List<Item> listaTodosLosItems() {
+        return itemRepository.findAll();
+    }
 }

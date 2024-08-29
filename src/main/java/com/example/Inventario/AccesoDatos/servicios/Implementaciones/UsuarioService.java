@@ -33,4 +33,9 @@ public class UsuarioService implements IUsuarioService{
     public void eliminarPorId(Long id) {
         usuarioRepository.deleteById(id);
     }
+
+    @Override
+    public List<Usuario> listarTodosLosUsuarios() {
+        return usuarioRepository.findAll();
+    }
 }

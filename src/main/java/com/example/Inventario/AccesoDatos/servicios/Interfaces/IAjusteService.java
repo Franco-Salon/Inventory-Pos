@@ -18,4 +18,8 @@ public interface IAjusteService {
     Ajuste crearOEditar(Ajuste ajuste);
 
     void eliminarPorId(Long id);
+       
+    List<Ajuste> listarTodosLosAjustes();
+
+
 }

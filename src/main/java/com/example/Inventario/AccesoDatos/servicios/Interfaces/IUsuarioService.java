@@ -1,10 +1,13 @@
 package com.example.Inventario.AccesoDatos.servicios.Interfaces;
 
+import java.util.List;
 import java.util.Optional;
+
 import com.example.Inventario.EntidadesNegocio.Usuario;
 import org.springframework.data.domain.*;
 
 public interface IUsuarioService {
+
 
     Page<Usuario> obtenerTodos(Pageable pageable);
 
@@ -13,4 +16,8 @@ public interface IUsuarioService {
     Usuario crearOEditar(Usuario usuario);
 
     void eliminarPorId(Long id);
+
+    List<Usuario> listarTodosLosUsuarios();
+    
+
 }

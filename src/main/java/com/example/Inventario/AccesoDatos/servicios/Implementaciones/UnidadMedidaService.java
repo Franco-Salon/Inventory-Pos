@@ -34,4 +34,9 @@ public class UnidadMedidaService implements IUnidadMedidaService{
     public void eliminarPorId(Long id) {
         unidadMedidaRepository.deleteById(id);
     }
+
+     @Override
+    public List<UnidadMedida> listarTodasLasUnidadesDeMedidas() {
+        return unidadMedidaRepository.findAll();
+    }
 }
