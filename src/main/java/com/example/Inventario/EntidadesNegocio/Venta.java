@@ -140,11 +140,11 @@ public class Venta {
         this.empresa = empresa;
     }
 
-    public @Valid List<DetalleVenta> getDetalleVentas() {
+    public  List<DetalleVenta> getDetalleVentas() {
         return detalleVentas;
     }
 
-    public void setDetalleVentas(@Valid List<DetalleVenta> detalleVentas) {
+    public void setDetalleVentas( List<DetalleVenta> detalleVentas) {
         this.detalleVentas = detalleVentas;
     }
 }

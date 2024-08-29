@@ -55,7 +55,7 @@
             <dt class="col-sm-2 h3">Tipo item:</dt>
             <dd class="col-sm-10 h3" th:text="${item.tipoitem.nombre}"></dd>
         </dl>
-        <form th:action="@{/tipoitems/delete}" method="post">
+        <form th:action="@{/item/delete}" method="post">
             <input type="hidden" name="id" th:value="${item.id}">
             <button type="submit" class="btn btn-danger">Eliminar</button> |
             <a th:href="@{/item}" class="btn btn-secondary">Regresar</a>

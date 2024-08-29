@@ -5,7 +5,6 @@ import com.example.Inventario.AccesoDatos.servicios.Interfaces.IEmpresaService;
 import com.example.Inventario.AccesoDatos.servicios.Interfaces.IItemService;
 import com.example.Inventario.AccesoDatos.servicios.Interfaces.ITipoItemServicevice;
 import com.example.Inventario.EntidadesNegocio.Item;
-import com.example.Inventario.EntidadesNegocio.TipoItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -101,8 +100,8 @@ public class ItemController {
     }
 
     @PostMapping("/delete")
-    public String delete(TipoItem tipoItem, RedirectAttributes attributes) {
-       itemService.eliminarPorId(tipoItem.getId());
+    public String delete(Item item, RedirectAttributes attributes) {
+       itemService.eliminarPorId(item.getId());
         attributes.addFlashAttribute("msg", "Item eliminado correctamente");
         return "redirect:/item";
     }

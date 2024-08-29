@@ -1,6 +1,7 @@
 package com.example.Inventario.EntidadesNegocio;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 
 
 import java.math.BigDecimal;
@@ -41,7 +42,9 @@ public class Compra {
     @JoinColumn(name = "id_Empresa", referencedColumnName = "id")
     private Empresa empresa;
 
-
+    @Valid
+    @OneToMany(mappedBy = "compra", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CompraDetalle> compraDetalles;
 
     // Getters and setters
 
@@ -124,5 +127,13 @@ public class Compra {
 
     public void setEmpresa(Empresa empresa) {
         this.empresa = empresa;
+    }
+
+    public List<CompraDetalle> getCompraDetalles() {
+        return compraDetalles;
+    }
+
+    public void setCompraDetalles(List<CompraDetalle> compraDetalles) {
+        this.compraDetalles = compraDetalles;
     }
 }
