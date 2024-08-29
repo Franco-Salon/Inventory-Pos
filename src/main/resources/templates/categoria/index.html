@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/layouts/_mainLayout"
+>
+
+<head>
+    <title>Lista Categoria</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+<div layout:fragment="content">
+    <h1>Lista de Categorias</h1>
+    <a th:href="@{/categorias/create}" class="btn btn-outline-primary mb-3">Nueva Categoria</a>
+    <table class="table">
+        <thead class="table-dark">
+        <tr>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="categoria : ${categoria}">
+            <td th:text="${categoria.nombre}"></td>
+            <td th:text="${categoria.descripcion}"></td>
+            <td>
+                <a th:href="@{/categorias/edit/{id}(id=${categoria.id})}" class="btn btn-secondary">Editar</a> |
+                <a th:href="@{/categorias/remove/{id}(id=${categoria.id})}" class="btn btn-danger">Eliminar</a> |
+                <a th:href="@{/categorias/details/{id}(id=${categoria.id})}" class="btn btn-info">Detalle</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item" th:classappend="${categoria.pageable.pageNumber == 0} ? 'disabled'">
+                <a class="page-link" th:href="@{/categorias(page=${categoria.pageable.pageNumber - 1}, size=${categoria.pageable.pageSize})}">Anterior</a>
+            </li>
+
+            <li class="page-item" th:each="pageNum : ${pageNumbers}"
+                th:if="${pageNum >= categoria.pageable.pageNumber - 2} and ${pageNum <= categoria.pageable.pageNumber + 2}"
+                th:classappend="${pageNum == categoria.pageable.pageNumber + 1} ? 'active'">
+                <a class="page-link" th:href="@{/categorias(page=${pageNum}, size=${categoria.pageable.pageSize})}"
+                   th:text="${pageNum}">1</a>
+            </li>
+
+            <li class="page-item" th:classappend="${categoria.pageable.pageNumber + 1 == categoria.totalPages} ? 'disabled'">
+                <a class="page-link" th:href="@{/categorias(page=${categoria.pageable.pageNumber + 1}, size=${categoria.pageable.pageSize})}">Siguiente</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+</body>
+
+</html>
